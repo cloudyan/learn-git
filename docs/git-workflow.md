@@ -8,6 +8,6 @@
     | init
 git | feature| -| start   -| name
     | release|  | finish   |
-    | hofitx |  | publish  |
+    | hotfix |  | publish  |
                 | pull     |
 ```
