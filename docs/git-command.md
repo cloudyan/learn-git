@@ -1,31 +1,71 @@
 # git-command
 
-最长用的命令
+最常用的命令
 
 ```bash
+# 初始化
 git init
-git clone/fetch <url>
 
+# 检出仓库
 git clone <url>
+git clone/fetch <[git clone username@host:]/path/to/repository>
+
+# 配置
 git config --list
 git config [--global] user.name "[name]"
 git config [--global] user.email "[email address]"
 git config [--global] alias.st status
 
+# 添加和提交
+             add                commit
+working dir  <=>  Index(Stage)    <=>    HEAD
+
+# 添加到暂存区（临时保存你的改动）
 git add .
-git add xxx.file
+git add <filename>
+# 提交改动到 HEAD，但还没推送到远程（HEAD 指向最后一次提交）
+git commit -m 'commit msg'
 git commit -am 'file msg'
+# 修改刚刚提交的 commit message
 git commit --amend
 
+# 推送改动
+git push origin <any-branch>
+# 将仓库链接到某个远程服务器
+git remote add origin <server>
+
+# 分支
+# 创建新分支
+git branch <new-branch> <commit>
+# 切换分支
+git checkout <branch>
+# 创建新分支并切换过去
+git checkout -b <new-branch>
+# 查看分支列表 远程分支 全部分支
 git branch | cat
 git branch -r
-git branch <new-branch> <commit>
-git checkout -b <new-branch>
-git checkout <branch>
+git branch -a
+# 切换到上一个分支
 git checkout -
+# TODO: 重置缓存区
 git checkout .
+# 删除分支
+git branch -d hotfix
+git branch -D hotfix log test
+# gitlab codereview 后，经常删除了远程分支，但本地还存在 remote-tracking
+# 如何批量删除跟踪?
+# Deleted remote-tracking branch origin/xxx (was 141f40c).
+git branch -rd <remote/xxx> # 仅仅删除远程跟踪
+git push origin --delete <remote-xxx>
 
+# 更新与合并
+# 更新本地仓库至最新改动
+git pull
+git fetch/pull [url] [remote] [branch]
+# 合并其他分支到你的分支（可能出现冲突conflicts，需要手工合并这些冲突）
 git merge <branch> [--no-ff]
+# 合并改动之前可以预览差异
+# git diff <source_branch> <target_branch>
 
 git branch -d hotfix
 git branch -D hotfix log test
@@ -36,6 +76,7 @@ git branch -D hotfix log test
 git branch -rd <remote/xxx> # 仅仅删除远程跟踪
 git push origin --delete <remote-xxx>
 
+# 标签
 git tag
 git tag [tag] [commit]
 git tag -d <tag>
@@ -44,12 +85,39 @@ git show <tag>
 git push --tags
 git checkout -b <new-branch> [tag]
 
+# log
+git log
+# 只看某一个人的提交记录
+git log --auth=bob
+# 一个压缩后的每一条提交记录只占一行的输出
+git log --pretty=online
+# 树形结构展示所有分支，包含作者和标签
+git log --graph --oneline --decorate --all
+# 看看哪些文件改变了
+git log --name-status
+git log --help
+
+# 替换本地改动
+# 此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件，
+# 已添加到暂存区的改动以及新文件都不会受到影响
+git checkout -- <filename>
+# 假如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它
+git fetch origin
+git reset --hard origin/master
+
+# 实用小贴士
+# 内建的图形化 git
+gitk
+# 彩色的 git 输出
+git config color.ui true
+# 显示历史记录时，每个提交的信息只显示一行
+git config format.pretty oneline
+# 交互式添加文件到暂存区
+git add -i
+
 git status
 git diff
 git reflog
-
-git fetch/pull [url] [remote] [branch]
-git push
 
 git checkout <xxx.file>
 git reset [--hard] HEAD
@@ -104,3 +172,7 @@ H = D^2  = B^^2    = A^^^2  = A~2^2
 I = F^   = B^3^    = A^^3^
 J = F^2  = B^3^2   = A^^3^2
 ```
+
+参考：
+
+- https://rogerdudler.github.io/git-guide/index.zh.html
