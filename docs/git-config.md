@@ -54,8 +54,8 @@ Host git@github.com
   IdentityFile ~/.ssh/yue_rsa
 
 # 公司的gitlab
-Host git@gitlab.iqianggou.com
-  HostName https://gitlab.iqianggou.com
+Host git@gitlab.xxx.com
+  HostName https://gitlab.xxx.com
   User git
   IdentityFile ~/.ssh/id_rsa
 

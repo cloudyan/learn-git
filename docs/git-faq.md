@@ -26,3 +26,7 @@ fatal: refusing to merge unrelated histories
 ```bash
 git pull <remote-url> --allow-unrelated-histories
 ```
+
+- [与忽略文件 .gitignore 的斗智斗勇](https://blog.csdn.net/qq_32452623/article/details/75264547)
+- [Git 原理：15分钟成为 GIT 专家](https://www.jianshu.com/p/c221f99f0bfd)
+- [HEAD^ 与 HEAD~ 的区别](https://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)

@@ -23,3 +23,7 @@ Pro Git 2
 
 - https://github.com/webcoding/useGit
 - https://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html
+- https://github.com/git-tips/tips
+  - 中文版 https://github.com/521xueweihan/git-tips
+- https://github.com/geeeeeeeeek/git-recipes
+- https://rogerdudler.github.io/git-guide/index.zh.html
