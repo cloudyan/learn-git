@@ -369,6 +369,12 @@
 
 ## 进阶
 
+### 关于撤销
+
+![git-status](./img/git-status.png)
+
+![git-file-flow](./img/git-file-flow.png)
+
 ### 关于 `HEAD^` 和 `HEAD~`
 
 首先，Git 提交可以有多个父级，使用 `^` 你可以找到任何提交的父级，而不仅仅是HEAD。你也可以追溯到几代人，使用 `~`。

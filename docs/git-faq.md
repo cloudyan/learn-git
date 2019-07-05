@@ -2,12 +2,17 @@
 
 ## 常见问题
 
-- github 拉取比较慢
-- git add . 后撤销此操作
-- git commit -am 'file msg' 后撤销此操作
-- 删除远程分支
-- 批量删除当前分支
-- 多账号配置问题
+- git add . 后想撤销怎么操作？
+- git commit -am 'file msg' 添加了错误的 commit 信息想修改怎么操作？
+- 如何删除远程分支？批量呢？
+- 如何拉取一个本地不存在的远程分支到本地？
+- github 拉取比较慢怎么解决？
+- 多个 github、gitlab 等账户并存？
+- 在 `.gitignore` 中添加规则无效什么原因？
+- HEAD^ 与 HEAD~ 有什么区别?
+  - [参考](./git-command)
+- 代码回滚：Reset、Checkout 和 Revert 如何选择?
+  - https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-代码回滚：Reset、Checkout、Revert-的选择
 
 ## 常见报错处理
 
@@ -26,6 +31,8 @@ fatal: refusing to merge unrelated histories
 ```bash
 git pull <remote-url> --allow-unrelated-histories
 ```
+
+参考：
 
 - [与忽略文件 .gitignore 的斗智斗勇](https://blog.csdn.net/qq_32452623/article/details/75264547)
 - [Git 原理：15分钟成为 GIT 专家](https://www.jianshu.com/p/c221f99f0bfd)

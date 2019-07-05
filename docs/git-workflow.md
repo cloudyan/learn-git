@@ -8,22 +8,34 @@
 
 我们的工作流，请使用下面的规范流程
 
-![my-gitflow](./img/my-gitflow.png)
-
 ### Git 使用规范流程
 
 [Git 使用规范流程](http://www.ruanyifeng.com/blog/2015/08/git-use-process.html) 团队开发中，遵循一个合理、清晰的Git使用流程，是非常重要的。
 
+否则，每个人都提交一堆杂乱无章的commit，项目很快就会变得难以协调和维护。
+
+面是 [ThoughtBot](https://github.com/thoughtbot/guides/tree/master/protocol/git) 的Git使用规范流程。我从中学到了很多，推荐你也这样使用Git。
+
+![git-use](./img/git-use.png)
+
 1. 新建分支
 
+    首先，每次开发新功能/修复 bug，都应该新建一个单独的分支（这方面可以参考[《Git分支管理策略》](http://www.ruanyifeng.com/blog/2012/07/git.html)）。
+
     ```bash
-    # 每次开发新功能，都应该新建一个单独的分支，可参考[Git分支管理策略]()
+    # 获取主干最新代码
     $ git checkout master
     $ git pull
+
+    # 开发新功能 新建 feature/myfeature 分支
+    # 修复bug 新建 hotfix/xxx 分支
     $ git checkout -b myfeature
+    $ git checkout -b hotfix-20190705
     ```
 
 2. 提交分支commit
+
+    分支修改后，就可以提交commit了。
 
     ```bash
     # 分支修改后，就可以提交commit了
@@ -33,6 +45,12 @@
     # verbose参数，会列出 diff 的结果
     $ git commit --verbose
     ```
+
+    git add 命令的all参数，表示保存所有变化（包括新建、修改和删除）。从Git 2.0开始，all是 git add 的默认参数，所以也可以用 git add . 代替。
+
+    git status 命令，用来查看发生变动的文件。
+
+    git commit 命令的verbose参数，会列出 [diff](http://www.ruanyifeng.com/blog/2012/08/how_to_read_diff.html) 的结果。
 
 3. 撰写提交信息
 
@@ -50,8 +68,10 @@
 
 4. 与主干同步
 
+    分支的开发过程中，要经常与主干保持同步。
+
     ```bash
-    # 以下操作方式待定
+    # TODO:
     # 分支的开发过程中，要经常与主干保持同步
     $ git fetch origin
     # 或
@@ -60,14 +80,16 @@
 
 5. 合并commit
 
-    ```bash
-    # 以下操作待定!!! 合并暂定为 git merge --no-ff
-    # 分支开发完成后，很可能有一堆commit，但是合并到主干的时候，往往希望只有一个（或最多两三个）commit，这样不仅清晰，也容易管理。
-    # 那么，怎样才能将多个commit合并呢？这就要用到 git rebase 命令。
+    以下操作待定!!! 合并暂定为 `git merge --no-ff`
 
+    分支开发完成后，很可能有一堆commit，但是合并到主干的时候，往往希望只有一个（或最多两三个）commit，这样不仅清晰，也容易管理。
+
+    那么，怎样才能将多个commit合并呢？这就要用到 git rebase 命令。
+
+    ```bash
     $ git rebase -i origin/master
 
-    # i参数表示互动（interactive），这时git会打开一个互动界面，进行下一步操作。
+    # rebase命令的i参数表示互动（interactive），这时git会打开一个互动界面，进行下一步操作。
     - pick：正常选中
     - reword：选中，并且修改提交信息；
     - edit：选中，rebase时会暂停，允许你修改这个commit
@@ -78,14 +100,18 @@
 
 6. 推送到远程仓库
 
+    合并commit后，就可以推送当前分支到远程仓库了。
+
     ```bash
-    # 合并commit后，就可以推送当前分支到远程仓库了
     $ git push
     # 不要使用 --force
-    $ git push --force origin
     ```
 
+    使用 rebase 以后，分支历史改变了，跟远程分支不一定兼容，有可能要强行推送（即加 --force 参数 参见这里）。
+
 7. 发出Pull Request
+
+    提交到远程仓库以后，就可以发出 Pull Request 到master分支，然后请求别人进行代码review，确认可以合并到master。
 
     ```bash
     # 提交到远程仓库以后，就可以发出 Pull Request 到发布分支release，
@@ -93,13 +119,16 @@
     $ git push
     ```
 
-8. 至少两人code review，之后完成合并
-9. 新增tag标签，发布上线
+8. 发布上线，并增加tag标签标记版本。
 
     ```bash
     git tag v1.x.x
     git push --tags
     ```
+
+### 参考流程
+
+![git-flow](./img/git-flow.png)
 
 ### git-flow 备忘清单
 
