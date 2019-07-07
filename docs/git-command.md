@@ -39,6 +39,9 @@
 
     # 下载/检出一个项目和它的整个代码历史
     $ git clone <url>
+
+    # depth用于指定克隆深度，为1即表示只克隆最近一次commit
+    # 这时会产生一个问题，只会把默认分支clone下来
     $ git clone <url> --depth=1
     $ git clone/fetch <[git clone username@host:]/path/to/repository>
 
@@ -56,6 +59,11 @@
     git config [--global] user.name "[name]"
     git config [--global] user.email "[email address]"
     git config [--global] alias.st status
+
+    # 忽略文件的权限变化
+    $ git config core.fileMode false
+
+    # 配置 http 和 socks 代理
     ```
 
 3. 添加/删除文件
@@ -133,6 +141,7 @@
 
     # 新建一个分支，并切换到该分支
     $ git checkout -b [new-branch]
+    $ git checkout -b develop master
 
     # 新建一个分支，指向指定commit
     $ git branch [new-branch] [commit]
@@ -204,6 +213,9 @@
     # 显示有变更的文件
     $ git status
 
+    # 显示有变更的文件 也显示忽略的文件
+    $ git status --ignored
+
     # 显示当前分支的版本历史
     $ git log
 
@@ -256,8 +268,8 @@
     # 显示工作区与当前分支最新commit之间的差异
     $ git diff HEAD
 
-    # 显示两次提交之间的差异
-    $ git diff [first-branch]...[second-branch]
+    # 显示任意两个 commit 之间的差异
+    $ git diff [commit-id] [commit-id]
 
     # 显示今天你写了多少行代码
     $ git diff --shortstat "@{0 day ago}"
@@ -366,6 +378,8 @@
     # 交互式添加文件到暂存区
     $ git add -i
     ```
+
+用的多了就熟练了，Git命令行确实很简单而且功能十分强悍！建议多用用命令行模式。
 
 ## 进阶
 
