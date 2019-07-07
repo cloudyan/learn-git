@@ -8,7 +8,7 @@
 
 - [**推荐**]命令行 [https://www.git-scm.com/download/](https://www.git-scm.com/download/)
 - 图形化界面
-  - 这里列出了几乎所有的 [GUI Clients](https://www.git-scm.com/downloads/guis/)，在此推荐两款
+  - [GUI Clients](https://www.git-scm.com/downloads/guis/)，推荐以下两款
   - Windows - TortoiseGit [https://download.tortoisegit.org/tgit/](https://download.tortoisegit.org/tgit/)
   - Mac - Sourcetree [https://www.sourcetreeapp.com/](https://www.sourcetreeapp.com/)
 
