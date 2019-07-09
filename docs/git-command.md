@@ -391,9 +391,10 @@
     # 分支 branch-2 合并到 branch-1
     git rebase [branch-1] [branch-2]
 
-    # 无视错误分支的 commit，将在错误分支上后提交的commit，基于正确的分支master，rebase 操作到新的分支上
-    # git rebase --onto master wrong_branch readme-update
+    # 合并一段 commits
     $ git rebase --onto [base-branch] [from-branch] [to-branch]
+    # 用于修正在错误点拉出分支并 committed 代码的问题
+    # git rebase --onto master wrong_branch readme-update
 
     # `--abort` 参数终止 rebase
     $ git rebase --abort
