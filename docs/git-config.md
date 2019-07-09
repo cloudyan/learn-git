@@ -107,10 +107,10 @@ git config user.name "cloudyan"
   ci = commit
   st = status
   br = branch
-  lg = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   type = cat-file -t
   dump = cat-file -p
   mg = merge --no-ff
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
 # git clone一个github上的仓库，太慢，经常连接失败
 # 但是github官网流畅访问，为什么？
