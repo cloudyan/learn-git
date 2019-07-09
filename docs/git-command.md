@@ -16,18 +16,6 @@
 
 要熟练使用 Git，请记住下面这些命令
 
-- 新建代码库
-- 配置
-- 添加/删除文件
-- 代码提交
-- 远程同步
-- 分支
-- 标签
-- 撤销
-- 查看信息
-- 其他
-- xxx
-
 1. 创建新仓库/检出仓库
 
     ```bash
@@ -111,7 +99,47 @@
     $ git commit --amend [file1] [file2] ...
     ```
 
-5. 分支
+5. 远程同步
+
+    ```bash
+    # 推送改动
+    git push origin <any-branch>
+    # 下载远程仓库的所有变动，但是并不合并到当前分支
+    $ git fetch [remote]
+
+    # 显示所有远程仓库，加 `-v` 可以将地址一起输出
+    $ git remote [-v]
+
+    # 显示某个远程仓库的信息
+    $ git remote show [remote]
+
+    # 增加一个新的远程仓库，并命名
+    $ git remote add [shortname] [url]
+
+    # 删除远程分支
+    $ git remote rm origin
+    # 如何删除远程关联？
+
+    # 取回远程仓库的变化，并与本地分支合并
+    $ git pull [remote] [branch]
+    $ git pull origin remote:local
+    $ git push origin local:remote
+    # `git pull` 就是 `git fetch` 和 `git merge` 组成的
+
+    # 如果本地分支没和远程关联，每次拉取必须制定分支，也可以使用下面方法关联分支
+    $ git branch --set-upstream-to=origin/<branch> master
+
+    # 上传本地指定分支到远程仓库
+    $ git push [remote] [branch]
+
+    # 强行推送当前分支到远程仓库，即使有冲突
+    $ git push [remote] --force
+
+    # 推送所有分支到远程仓库
+    $ git push [remote] --all
+    ```
+
+6. 分支
 
     ```bash
     # 列出所有本地分支
@@ -168,7 +196,7 @@
     # 如何批量删除跟踪?
     ```
 
-6. 标签
+7. 标签
 
     ```bash
     # 列出所有tag
@@ -205,7 +233,52 @@
     $ git checkout [tags/v1.x]
     ```
 
-7. 查看信息
+8. 撤销
+
+    ```bash
+    # 恢复暂存区的指定文件到工作区
+    # 此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件，
+    # 已添加到暂存区的改动以及新文件都不会受到影响
+    $ git checkout [file]
+
+    # 恢复某个commit的指定文件到暂存区和工作区
+    $ git checkout [commit] [file]
+
+    # 恢复暂存区的所有文件到工作区
+    $ git checkout .
+
+    # 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变
+    $ git reset [file]
+
+    # 重置暂存区与工作区，与上一次commit保持一致
+    $ git reset --hard
+
+    # 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变
+    $ git reset [commit]
+
+    # 假如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它
+    $ git fetch origin
+    $ git reset --hard origin/master
+
+    # 重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致
+    $ git reset --hard [commit]
+
+    # 重置当前HEAD为指定commit，但保持暂存区和工作区不变
+    $ git reset --keep [commit]
+
+    # 新建一个commit，用来撤销指定commit（针对已经 push到远程，无法本地使用 reset修复的情况）
+    # revert 是使用一个反向 commit 来抵消之前 commit 作出的修改而不是将之前的 commit 删除
+    $ git revert [bad-commit]
+    # https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9
+
+    # 暂时将未提交的变化移除，稍后再移入
+    $ git stash
+    $ git stash list
+    $ git stash pop
+    $ git stash clear
+    ```
+
+9. 查看信息
 
     ```bash
     # 显示有变更的文件
@@ -283,91 +356,6 @@
 
     # 显示当前分支的最近几次提交
     $ git reflog
-    ```
-
-8. 远程同步
-
-    ```bash
-    # 推送改动
-    git push origin <any-branch>
-    # 下载远程仓库的所有变动，但是并不合并到当前分支
-    $ git fetch [remote]
-
-    # 显示所有远程仓库，加 `-v` 可以将地址一起输出
-    $ git remote [-v]
-
-    # 显示某个远程仓库的信息
-    $ git remote show [remote]
-
-    # 增加一个新的远程仓库，并命名
-    $ git remote add [shortname] [url]
-
-    # 删除远程分支
-    $ git remote rm origin
-    # 如何删除远程关联？
-
-    # 取回远程仓库的变化，并与本地分支合并
-    $ git pull [remote] [branch]
-    $ git pull origin remote:local
-    $ git push origin local:remote
-    # `git pull` 就是 `git fetch` 和 `git merge` 组成的
-
-    # 如果本地分支没和远程关联，每次拉取必须制定分支，也可以使用下面方法关联分支
-    $ git branch --set-upstream-to=origin/<branch> master
-
-    # 上传本地指定分支到远程仓库
-    $ git push [remote] [branch]
-
-    # 强行推送当前分支到远程仓库，即使有冲突
-    $ git push [remote] --force
-
-    # 推送所有分支到远程仓库
-    $ git push [remote] --all
-    ```
-
-9.  撤销
-
-    ```bash
-    # 恢复暂存区的指定文件到工作区
-    # 此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件，
-    # 已添加到暂存区的改动以及新文件都不会受到影响
-    $ git checkout [file]
-
-    # 恢复某个commit的指定文件到暂存区和工作区
-    $ git checkout [commit] [file]
-
-    # 恢复暂存区的所有文件到工作区
-    $ git checkout .
-
-    # 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变
-    $ git reset [file]
-
-    # 重置暂存区与工作区，与上一次commit保持一致
-    $ git reset --hard
-
-    # 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变
-    $ git reset [commit]
-
-    # 假如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它
-    $ git fetch origin
-    $ git reset --hard origin/master
-
-    # 重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致
-    $ git reset --hard [commit]
-
-    # 重置当前HEAD为指定commit，但保持暂存区和工作区不变
-    $ git reset --keep [commit]
-
-    # 新建一个commit，用来撤销指定commit（针对已经 push到远程，无法本地使用 reset修复的情况）
-    # revert 是使用一个反向 commit 来抵消之前 commit 作出的修改而不是将之前的 commit 删除
-    $ git revert [bad-commit]
-    # https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9
-
-    # 暂时将未提交的变化移除，稍后再移入
-    $ git stash
-    $ git stash list
-    $ git stash pop
-    $ git stash clear
     ```
 
 10. 其他
