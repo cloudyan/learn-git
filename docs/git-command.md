@@ -55,11 +55,11 @@
 
     ```bash
     # 配置
-    git config --list
-    git config [--global] user.name 'name'
-    git config [--global] user.email 'email address'
-    git config [--global] alias.st status
-    git config [--local] user.name 'name'
+    $ git config --list
+    $ git config [--global] user.name 'name'
+    $ git config [--global] user.email 'email address'
+    $ git config [--global] alias.st status
+    $ git config [--local] user.name 'name'
     # 忽略文件的权限变化
     $ git config core.fileMode false
 
@@ -176,6 +176,7 @@
     # gitlab codereview 后，经常删除了远程分支，但本地还存在 remote-tracking
     $ git push origin --delete [remote-branch]
     $ git branch -dr [remote/branch] # 仅仅删除远程跟踪
+    $ git remote rm origin # 删除远程分支
     # Deleted remote-tracking branch origin/xxx (was 141f40c).
     # 如何批量删除跟踪?
     ```
@@ -313,6 +314,9 @@
 
     # 增加一个新的远程仓库，并命名
     $ git remote add [shortname] [url]
+
+    # 删除远程分支
+    $ git remote rm origin
     # 如何删除远程关联？
 
     # 取回远程仓库的变化，并与本地分支合并
