@@ -1,0 +1,30 @@
+{
+  "name": "@deepjs/learn-git",
+  "description": "学习并掌握 Git",
+  "version": "0.0.1",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vuepress": "^1.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepjs-net/learn-git.git"
+  },
+  "keywords": [
+    "learning",
+    "git"
+  ],
+  "author": "cloudyan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deepjs-net/learn-git/issues"
+  },
+  "homepage": "https://github.com/deepjs-net/learn-git#readme"
+}

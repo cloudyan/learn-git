@@ -2,6 +2,24 @@
 
 [githug](https://github.com/Gazler/githug) ，这个命令行工具被设计来练习你的 Git 技能，它把平常可能遇到的一些场景都实例化，变成一个一个的关卡，一共有 56 个关卡，所以将它形象的形容为 Git 游戏。
 
+**安装**
+
+```bash
+# Mac
+gem install githug
+
+# play
+githug
+```
+
+帮助
+
+- githug hint         # Get a hint for the current level
+- githug levels       # List all of the levels
+- githug play         # Initialize the game
+- githug reset        # Reset the current level
+- githug test         # Test a level from a file path
+
 1. init 初始化仓库
 
     > A new directory, ‘git_hug’, has been created; initialize an empty repository in it.
