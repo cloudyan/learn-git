@@ -3,7 +3,7 @@
 - [安装配置](./git-config.md)
 - [常用命令](./git-command.md)
 - [常见问题](./git-faq.md)
-- [workflow](./git-workflow.md)
+- [工作流 workflow](./git-workflow.md)
 - [Commit message 和 Change log 编写指南](./git-commit-message.md)
 
 ## 文档
