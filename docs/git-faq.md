@@ -6,6 +6,17 @@
 - `git commit -am 'file msg'` 添加了错误的 commit 信息想修改怎么操作？
 - 如何删除远程分支？批量呢？
 - 如何拉取一个本地不存在的远程分支？
+- 撤销已经 commit的修改，恢复到暂存区？恢复到工作区？
+- 上面时候使用 rebase？
+- 分支关联远程链接后，如何撤销？
+- 查看差异，暂存区和工作区？仓库和工作区？仓库和暂存区？
+- 正在开发 feature 分支（有 dev 分支切出来），接着我们有个 dev 的 bug 需要修复，然后我们忘记checkout 到 dev 分支，而是直接在 feature 分支上新建，当我们发现分支建立在错误点的时候我们已经提交了好几个 commit 了，如何修正此问题？
+- 提交了好几个 commit 了，才发现中间有个 commit 写的不对，要修正怎么处理？
+- 开发的好几个 commit 已经提交到远程了，现在说之前一个 commit 需求不要了，如何处理？
+- 有个分支不小心删除了，怎么找回来？
+- 使用 reset 删除了某 commit 的工作，现在后悔了，想恢复怎么办？
+- 使用 `git reset --hard HEAD^` 删除了最新提交，现在又后悔了，想还原怎么办?
+-
 - github 拉取比较慢怎么解决？
 - 多个 github、gitlab 等账户并存？
 - 在 `.gitignore` 中添加规则无效什么原因？
@@ -125,6 +136,13 @@ cloudyan@IT0101 /E/git/webtest (testing)
 $ git branch --list
 * testing
   master
+```
+
+### 执行 `git commit --date=2019-07-10T12:00:00` 时报错，fatal: could not read '/Users/jack/.stCommitMsg': No such file or directory
+
+```bash
+# 查看 commit.template 以及 Users/xxx，是否配置正确
+git config --get commit.template
 ```
 
 参考：
