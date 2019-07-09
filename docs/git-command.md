@@ -142,6 +142,7 @@
     # 新建一个分支，并切换到该分支
     $ git checkout -b [new-branch]
     $ git checkout -b develop master
+    $ git checkout -b dev origin/dev
 
     # 新建一个分支，指向指定commit
     $ git branch [new-branch] [commit]
