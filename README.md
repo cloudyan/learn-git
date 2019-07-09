@@ -4,6 +4,7 @@
 - [常用命令](./docs/git-command.md)
 - [常见问题](./docs/git-faq.md)
 - [工作流 workflow](./docs/git-workflow.md)
+- [Git 练习](./git-test.md)
 - [Commit message 和 Change log 编写指南](./docs/git-commit-message.md)
 
 ## 文档
