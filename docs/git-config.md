@@ -14,12 +14,64 @@
 
 ## 配置
 
+Git的设置文件为 `~/.gitconfig`，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置默认）。
+
+```bash
+$ code ~/.gitconfig
+# 全局配置
+$ git config --list
+$ git config [--global] user.name 'name'
+$ git config [--global] user.email 'email address'
+$ git config [--global] alias.st status
+
+# 设置每个项目repo的自己的user.email
+$ git config [--local] user.email "xxx1@qq.com"
+$ git config user.name 'cloudyan'
+# 忽略文件的权限变化
+$ git config core.fileMode false
+
+
+# 取消配置
+git config [--global] --unset user.name
+git config [--global] --unset user.email
+
+# 配置 http 和 socks 代理（是解决 github 拉取代码慢的方案之一）
+
+# git clone一个github上的仓库，太慢，经常连接失败
+# 但是github官网流畅访问，为什么？
+# https://www.zhihu.com/question/27159393
+```
+
+### 别名配置
+
+为了操作更为简单便捷，可以配置别名，对应配置文件 `~/.gitconfig`
+
+```conf
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  type = cat-file -t
+  dump = cat-file -p
+  mg = merge --no-ff
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+```
+
 ### github操作指南
 
-如果需要操作github，你可以参考
+如果需要操作github/gitlab，你可以参考
 
 - [Git 与 github 操作指南](https://github.com/webcoding/useGit)
 - [图形化软件TortoiseGit与github网站关联](https://github.com/webcoding/useGit#图形化软件tortoisegit与github网站关联)
+
+添加 ssh key 到站点，之后 `push` 或 `pull` 就不用每次输入账号、密码了。
+
+**备注**
+
+生成ssh key
+
+`ssh-keygen -m rsa -C "your mail"` （当前目录） 然后可以命名默认id_rsa 或者id_rsa_second 把对应的pub放到公共服务器上。
 
 ### 多账号配置问题
 
@@ -78,42 +130,3 @@ Host git@gitlab.xxx.com
 这种情况下，需要几点注意
 
 remote pull push的时候有问题，因为要设置邮箱问题了 pull的时候识别的是邮箱，2个github账号，2个邮箱，我们自然不能使用global的user.email了
-
-```bash
-# 取消global
-git config --global --unset user.name
-git config --global --unset user.email
-
-# 设置每个项目repo的自己的user.email
-git config user.email "xxx1@qq.com"
-git config user.name "cloudyan"
-```
-
-之后push pull就木有问题了
-
-**备注**
-
-生成ssh key
-
-`ssh-keygen -m rsa -C "your mail"` （当前目录） 然后可以命名默认id_rsa 或者id_rsa_second 把对应的pub放到公共服务器上。
-
-### 别名配置
-
-为了操作更为简单便捷，可以配置别名，对应配置文件 `~/.gitconfig`
-
-```conf
-[alias]
-  co = checkout
-  ci = commit
-  st = status
-  br = branch
-  type = cat-file -t
-  dump = cat-file -p
-  mg = merge --no-ff
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-
-# git clone一个github上的仓库，太慢，经常连接失败
-# 但是github官网流畅访问，为什么？
-# https://www.zhihu.com/question/27159393
-$ code ~/.gitconfig
-```
