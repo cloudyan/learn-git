@@ -9,7 +9,7 @@
 
 几个专用名词的译名如下，**你必须要了解这几个概念**。
 
-- Workspace：工作区
+- Workspace：工作区/working directory
 - Index / Stage：暂存区
 - Repository：仓库区（或本地仓库）
 - Remote：远程仓库
@@ -56,10 +56,10 @@
     ```bash
     # 配置
     git config --list
-    git config [--global] user.name "[name]"
-    git config [--global] user.email "[email address]"
+    git config [--global] user.name 'name'
+    git config [--global] user.email 'email address'
     git config [--global] alias.st status
-
+    git config [--local] user.name 'name'
     # 忽略文件的权限变化
     $ git config core.fileMode false
 
@@ -146,6 +146,9 @@
     # 新建一个分支，指向指定commit
     $ git branch [new-branch] [commit]
 
+    # 根据一个特定的提交创建新分支
+    $ git branch [new-branch] HEAD^1
+
     # 新建一个分支，与指定的远程分支建立追踪关系
     $ git branch --track [branch] [remote-branch]
 
@@ -205,6 +208,12 @@
 
     # 新建一个分支，指向某个tag
     $ git checkout -b [new-branch] [tag]
+
+    # 切换到某个特定的 tag
+    $ git checkout [tag]
+
+    # 切换到某个特定的分支，但是分支名和标签名重叠了
+    $ git checkout [tags/v1.x]
     ```
 
 7. 查看信息
@@ -262,7 +271,7 @@
     # 显示暂存区和工作区的差异
     $ git diff
 
-    # 显示暂存区和上一个commit的差异
+    # 显示暂存区和上一个commit的(本地库)差异
     $ git diff --cached [file]
 
     # 显示工作区与当前分支最新commit之间的差异
@@ -292,20 +301,27 @@
     ```bash
     # 推送改动
     git push origin <any-branch>
-    # 下载远程仓库的所有变动
+    # 下载远程仓库的所有变动，但是并不合并到当前分支
     $ git fetch [remote]
 
-    # 显示所有远程仓库
-    $ git remote -v
+    # 显示所有远程仓库，加 `-v` 可以将地址一起输出
+    $ git remote [-v]
 
     # 显示某个远程仓库的信息
     $ git remote show [remote]
 
     # 增加一个新的远程仓库，并命名
     $ git remote add [shortname] [url]
+    # 如何删除远程关联？
 
     # 取回远程仓库的变化，并与本地分支合并
     $ git pull [remote] [branch]
+    $ git pull origin remote:local
+    $ git push origin local:remote
+    # `git pull` 就是 `git fetch` 和 `git merge` 组成的
+
+    # 如果本地分支没和远程关联，每次拉取必须制定分支，也可以使用下面方法关联分支
+    $ git branch --set-upstream-to=origin/<branch> master
 
     # 上传本地指定分支到远程仓库
     $ git push [remote] [branch]
@@ -350,9 +366,9 @@
     # 重置当前HEAD为指定commit，但保持暂存区和工作区不变
     $ git reset --keep [commit]
 
-    # 新建一个commit，用来撤销指定commit
-    # 后者的所有变化都将被前者抵消，并且应用到当前分支
-    $ git revert [commit]
+    # 新建一个commit，用来撤销指定commit（针对已经 push到远程，无法本地使用 reset修复的情况）
+    # revert 是使用一个反向 commit 来抵消之前 commit 作出的修改而不是将之前的 commit 删除
+    $ git revert [bad-commit]
     # https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9
 
     # 暂时将未提交的变化移除，稍后再移入
@@ -364,7 +380,27 @@
 
 10. 其他
 
+    > Golden Rule of Rebasing
+    > 永远不要在public 分支上使用git rebase！
+
     ```bash
+    # 合并多次提交纪录(commit 次数太多，不利于 Code Review，不利于排查问题)
+    $ git rebase -i HEAD~4
+    $ git rebase -i <commit hash>
+
+    # 分支 branch-2 合并到 branch-1
+    git rebase [branch-1] [branch-2]
+
+    # 无视错误分支的 commit，将在错误分支上后提交的commit，基于正确的分支master，rebase 操作到新的分支上
+    # git rebase --onto master wrong_branch readme-update
+    $ git rebase --onto [base-branch] [from-branch] [to-branch]
+
+    # `--abort` 参数终止 rebase
+    $ git rebase --abort
+
+    # 统计出文件中还有多少个 TODO 字符串
+    $ git grep --count TODO
+
     # 生成一个可供发布的压缩包
     $ git archive
 
@@ -388,6 +424,17 @@
 ![git-status](./img/git-status.png)
 
 ![git-file-flow](./img/git-file-flow.png)
+
+- `git reset` 使用本地仓库中的版本**覆盖**暂存区(Index/Stage)中的
+  - 如果 workspace 中该文件没有其他修改，则 Stage 中的修改将应用到 workspace 中
+  - (TODO:)如果 workspace 中有修改，则该修改的版本被保留，丢弃 Stage 中的修改。
+- `git checkout` 则是使用 Stage 的中的版本覆盖 workspace。
+
+reset soft
+
+- `--soft` 参数将上一次的修改放入 staging area
+- `--mixed` 参数将上一次的修改放入 working directory(默认)
+- `--hard` 参数直接将上一次的修改抛弃
 
 ### 关于 `HEAD^` 和 `HEAD~`
 
@@ -436,3 +483,5 @@ J = F^2  = B^3^2   = A^^3^2
 - [Git内部原理](http://yanhaijing.com/git/2017/02/08/deep-git-3/)
 - [git --fixup & --autosquash](https://fle.github.io/git-tip-keep-your-branch-clean-with-fixup-and-autosquash.html)
 - [git - 简明指南](https://rogerdudler.github.io/git-guide/index.zh.html)
+- [diff](https://www.ruanyifeng.com/blog/2012/08/how_to_read_diff.html)
+  - https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-diff.html

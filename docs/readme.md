@@ -8,7 +8,7 @@
 
 ## 文档
 
-Pro Git 2
+![Pro Git 2](https://git-scm.com/images/progit2.png)
 
 - English [https://git-scm.com/book/en/v2](https://git-scm.com/book/en/v2)
 - [**强烈推荐**]中文版 [https://git-scm.com/book/zh/v2/](https://git-scm.com/book/zh/v2/)
