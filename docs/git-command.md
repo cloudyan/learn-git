@@ -51,20 +51,7 @@
 
 2. 配置
 
-    Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
-
-    ```bash
-    # 配置
-    $ git config --list
-    $ git config [--global] user.name 'name'
-    $ git config [--global] user.email 'email address'
-    $ git config [--global] alias.st status
-    $ git config [--local] user.name 'name'
-    # 忽略文件的权限变化
-    $ git config core.fileMode false
-
-    # 配置 http 和 socks 代理
-    ```
+    参见 [./git-config.md#配置](./git-config.md#配置)
 
 3. 添加/删除文件
 
@@ -338,7 +325,7 @@
     $ git push [remote] --all
     ```
 
-9. 撤销
+9.  撤销
 
     ```bash
     # 恢复暂存区的指定文件到工作区
