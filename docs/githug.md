@@ -10,15 +10,14 @@ gem install githug
 
 # play
 githug
+
+# 帮助
+githug hint         # Get a hint for the current level
+githug levels       # List all of the levels
+githug play         # Initialize the game
+githug reset        # Reset the current level
+githug test         # Test a level from a file path
 ```
-
-帮助
-
-- githug hint         # Get a hint for the current level
-- githug levels       # List all of the levels
-- githug play         # Initialize the game
-- githug reset        # Reset the current level
-- githug test         # Test a level from a file path
 
 1. init 初始化仓库
 
