@@ -35,11 +35,18 @@ $ git config core.fileMode false
 git config [--global] --unset user.name
 git config [--global] --unset user.email
 
-# 配置 http 和 socks 代理（是解决 github 拉取代码慢的方案之一）
+# 配置 http 和 socks 代理（这是解决 github 拉取代码慢的方案之一）
 
 # git clone一个github上的仓库，太慢，经常连接失败
 # 但是github官网流畅访问，为什么？
 # https://www.zhihu.com/question/27159393
+
+[http]
+  postBuffer = 524288000
+  proxy = socks5://127.0.0.1:1086
+[https]
+  postBuffer = 524288000
+  proxy = socks5://127.0.0.1:1086
 ```
 
 ### 别名配置
