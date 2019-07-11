@@ -1,5 +1,5 @@
 git checkout master
-git merge dev
+git merge dev --no-ff
 
 #!/usr/bin/env sh
 set -e
