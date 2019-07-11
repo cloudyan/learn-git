@@ -1,7 +1,7 @@
 {
   "name": "@deepjs/learn-git",
   "description": "学习并掌握 Git",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "scripts": {
     "preinstall": "npm config set registry https://registry.npm.taobao.org/",
