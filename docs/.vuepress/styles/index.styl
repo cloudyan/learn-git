@@ -1,0 +1,65 @@
+// 将会被自动应用的全局样式文件，会生成在最终的CSS文件结尾，具有比默认样式更高的优先级。
+
+body
+  overflow-y scroll
+
+// 设置代码段超出换行
+.content pre,
+.content pre[class*=language-]
+  word-break break-all
+  white-space pre-wrap
+
+div[class~="language-code"]:before
+  content "code"
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  background-color: transparent;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  // border-radius: 4px;
+  background-color: transparent;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: rgba(193, 193, 193, 0.9);
+}
+
+.table-of-contents
+  position sticky
+  top 80px;
+
+.toasted-container.compatibility-notification
+  &.top-right
+    right 4vw
+  .toasted
+    font-weight 400
+    width 400px
+    background-color $accentColor
+    padding 20px 20px
+    line-height 1.5
+    display block
+    box-shadow 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3)
+    .action.ripple
+      border 1px solid #fff
+      color #fff
+      float right
+      white-space nowrap
+      margin 0
+    code
+      text-decoration underline
+
+@media (max-width: $MQMobile)
+  .toasted-container.compatibility-notification
+    &.top-right
+      right 5vw
+    .toasted
+      width 80vw
