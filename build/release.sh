@@ -14,7 +14,7 @@ then
   npm run build
   if [[ `git status --porcelain` ]];
   then
-    git add -A
+    # git add -A
     git commit -am "[build] $VERSION"
   fi
 
