@@ -160,9 +160,3 @@ git | feature| -| start   -| name
 - [分布式-Git-分布式工作流程](https://git-scm.com/book/zh/v2/分布式-Git-分布式工作流程)
 - [Git分支管理策略](http://www.ruanyifeng.com/blog/2012/07/git.html)
 - [高效git工作流](https://juejin.im/post/5b2b76e251882574934c388d)
-<<<<<<< HEAD
-- [git-flow 的工作流程](https://www.git-tower.com/learn/git/ebook/cn/command-line/advanced-topics/git-flow)
-- [Gitflow有害论](http://insights.thoughtworkers.org/gitflow-consider-harmful/)
-  - [Trunk Based Development](https://paulhammant.com/2013/04/05/what-is-trunk-based-development/)
-=======
->>>>>>> release/0.1.0
