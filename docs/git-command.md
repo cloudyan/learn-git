@@ -374,6 +374,8 @@
     > 永远不要在public 分支上使用git rebase！
 
     ```bash
+    # Squash 多个commit，在发起 PR 之前，应该把多个 commit 合并成一个（前提是该分支只有你一个人开发，且没有根 master 合并过）
+
     # 合并多次提交纪录(commit 次数太多，不利于 Code Review，不利于排查问题)
     $ git rebase -i HEAD~4
     $ git rebase -i <commit hash>
