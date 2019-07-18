@@ -1,14 +1,16 @@
 # git-workflow
 
-我们可以使用 git-flow 进行有效的分支实践
-
 ## 工作流
 
 工作流英文名称叫做“workflow”，高效的工作流能像流水一样让这个工作体验顺畅且自然。
 
 所以制定一套规范有效的git工作流来规范我们的分支管理和工作流程是极其必要的，并且越早越好。
 
-我们的工作流，请使用下面的规范流程
+下面是三种广泛使用的工作流程：
+
+- 最早诞生、并得到广泛采用的一种工作流程，就是 [Git flow](https://nvie.com/posts/a-successful-git-branching-model/)。
+- [Github flow](http://scottchacon.com/2011/08/31/github-flow.html)是Git flow的简化版，专门配合"持续发布"。它是 Github.com 使用的工作流程。
+- [Gitlab flow](http://doc.gitlab.com/ee/workflow/gitlab_flow.html)是 Git flow 与 Github flow 的综合。它吸取了两者的优点，既有适应不同开发环境的弹性，又有单一主分支的简单和便利。它是 Gitlab.com 推荐的做法。
 
 ### Git 使用规范流程
 
@@ -153,3 +155,5 @@ git | feature| -| start   -| name
 - [Git分支管理策略](http://www.ruanyifeng.com/blog/2012/07/git.html)
 - [高效git工作流](https://juejin.im/post/5b2b76e251882574934c388d)
 - [git-flow 的工作流程](https://www.git-tower.com/learn/git/ebook/cn/command-line/advanced-topics/git-flow)
+- [Gitflow有害论](http://insights.thoughtworkers.org/gitflow-consider-harmful/)
+  - [Trunk Based Development](https://paulhammant.com/2013/04/05/what-is-trunk-based-development/)
