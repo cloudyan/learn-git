@@ -14,19 +14,9 @@ const execa = require('execa')
 const semver = require('semver')
 const inquirer = require('inquirer')
 const minimist = require('minimist')
-console.log(process.argv);
+
 const cliOptions = minimist(process.argv)
 
-console.log(cliOptions);
-
-// if (cliOptions['local-registry']) {
-//   inquirer.prompt = () => ({
-//     bump: 'minor',
-//     yes: true
-//   })
-// }
-
-return;
 
 const release = async () => {
   // 检测分支是否干净

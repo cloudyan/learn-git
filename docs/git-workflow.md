@@ -6,7 +6,11 @@
 
 所以制定一套规范有效的git工作流来规范我们的分支管理和工作流程是极其必要的，并且越早越好。
 
-我们的工作流，请使用下面的规范流程
+下面是三种广泛使用的工作流程：
+
+- 最早诞生、并得到广泛采用的一种工作流程，就是 [Git flow](https://nvie.com/posts/a-successful-git-branching-model/)。
+- [Github flow](http://scottchacon.com/2011/08/31/github-flow.html)是Git flow的简化版，专门配合"持续发布"。它是 Github.com 使用的工作流程。
+- [Gitlab flow](http://doc.gitlab.com/ee/workflow/gitlab_flow.html)是 Git flow 与 Github flow 的综合。它吸取了两者的优点，既有适应不同开发环境的弹性，又有单一主分支的简单和便利。它是 Gitlab.com 推荐的做法。
 
 ### Git 使用规范流程
 
@@ -133,6 +137,11 @@
 ### git-flow 备忘清单
 
 我们可以使用 git-flow 进行有效的分支实践
+
+```bash
+# mac
+$ brew install git-flow-avh
+```
 
 - https://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html
 

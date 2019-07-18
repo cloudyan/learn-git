@@ -14,6 +14,7 @@
 - English [https://git-scm.com/book/en/v2](https://git-scm.com/book/en/v2)
   - https://git-scm.com/docs
 - [**强烈推荐**]中文版 [https://git-scm.com/book/zh/v2/](https://git-scm.com/book/zh/v2/)
+- [Learn Version Control with Git](https://www.git-tower.com/learn/git/ebook/cn/command-line/introduction)
 
 Git详解教程列表：
 
