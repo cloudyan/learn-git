@@ -231,6 +231,16 @@
 
     # 切换到某个特定的分支，但是分支名和标签名重叠了
     $ git checkout [tags/v1.x]
+
+    # 扩展
+    # 先列出按照时间倒叙的 tag 列表，然后取出第一行
+    $ git tag -n --sort=-taggerdate | grep n1
+
+    # 利用 git log 的 format 取出 hash
+    $ git log --format="%h" ${lastTag} |grep n1
+
+    # 回滚
+    $ get reset --hard ${lastTagHash}
     ```
 
 8. 撤销
