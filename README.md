@@ -7,7 +7,7 @@
 - [Git 练习](./git-test.md)
 - [Commit message 和 Change log 编写指南](./docs/git-commit-message.md)
 
-## 文档
+## 推荐文档
 
 ![Pro Git 2](https://git-scm.com/images/progit2.png)
 

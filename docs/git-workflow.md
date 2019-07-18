@@ -14,7 +14,7 @@
 
 否则，每个人都提交一堆杂乱无章的commit，项目很快就会变得难以协调和维护。
 
-面是 [ThoughtBot](https://github.com/thoughtbot/guides/tree/master/protocol/git) 的Git使用规范流程。我从中学到了很多，推荐你也这样使用Git。
+下面是 [ThoughtBot](https://github.com/thoughtbot/guides/tree/master/protocol/git) 的Git使用规范流程。我从中学到了很多，推荐你也这样使用Git。
 
 ![git-use](./img/git-use.png)
 
@@ -29,8 +29,8 @@
 
     # 开发新功能 新建 feature/myfeature 分支
     # 修复bug 新建 hotfix/xxx 分支
-    $ git checkout -b myfeature
-    $ git checkout -b hotfix-20190705
+    $ git checkout -b feature/xxx
+    $ git checkout -b hotfix/xxx
     ```
 
 2. 提交分支commit
@@ -46,11 +46,11 @@
     $ git commit --verbose
     ```
 
-    git add 命令的all参数，表示保存所有变化（包括新建、修改和删除）。从Git 2.0开始，all是 git add 的默认参数，所以也可以用 git add . 代替。
+    `git add` 命令的all参数，表示保存所有变化（包括新建、修改和删除）。从Git 2.0开始，all是 `git add` 的默认参数，所以也可以用 `git add .` 代替。
 
-    git status 命令，用来查看发生变动的文件。
+    `git status` 命令，用来查看发生变动的文件。
 
-    git commit 命令的verbose参数，会列出 [diff](http://www.ruanyifeng.com/blog/2012/08/how_to_read_diff.html) 的结果。
+    `git commit` 命令的verbose参数，会列出 [diff](http://www.ruanyifeng.com/blog/2012/08/how_to_read_diff.html) 的结果。
 
 3. 撰写提交信息
 
@@ -107,7 +107,7 @@
     # 不要使用 --force
     ```
 
-    使用 rebase 以后，分支历史改变了，跟远程分支不一定兼容，有可能要强行推送（即加 --force 参数 参见这里）。
+    使用 `rebase` 以后，分支历史改变了，跟远程分支不一定兼容，有可能要强行推送（即加 --force 参数 参见这里）。
 
 7. 发出Pull Request
 
@@ -132,7 +132,7 @@
 
 ### git-flow 备忘清单
 
-可以使用 git-flow 进行有效的分支实践
+我们可以使用 git-flow 进行有效的分支实践
 
 - https://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html
 
@@ -150,3 +150,4 @@ git | feature| -| start   -| name
 - [分布式-Git-分布式工作流程](https://git-scm.com/book/zh/v2/分布式-Git-分布式工作流程)
 - [Git分支管理策略](http://www.ruanyifeng.com/blog/2012/07/git.html)
 - [高效git工作流](https://juejin.im/post/5b2b76e251882574934c388d)
+- [git-flow 的工作流程](https://www.git-tower.com/learn/git/ebook/cn/command-line/advanced-topics/git-flow)
