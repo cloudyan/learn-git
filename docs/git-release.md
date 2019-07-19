@@ -13,18 +13,13 @@
 
 ### 发布
 
+执行 `npm run release` 脚本，发布发行版本
 
-
-TODO:
-
-- 一行命令启动 `npm run release`
-- 弹出交互界面，一步步操作
-  - 输入版本号，默认 `npm version patch`
-  - 切换对应分支，合并等自动处理
-  - 打标签等，并提交到远程
-
-- npm run release
-- npm run deploy
+1. TODO: 检测分支是否干净
+2. TODO: 询问分支并切换分支，拉取最新代码
+3. 询问版本并确认
+4. 升级版本并添加 tag
+5. 发布到远程
 
 参考：
 
