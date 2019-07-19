@@ -5,6 +5,7 @@
 - [常见问题](./git-faq.md)
 - [工作流 workflow](./git-workflow.md)
 - [Git 练习](./git-test.md)
+- [发行版本](./git-release.md)
 - [Commit message 和 Change log 编写指南](./git-commit-message.md)
 
 ## 文档
