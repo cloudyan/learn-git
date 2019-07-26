@@ -1,7 +1,6 @@
 # 练习 Git
 
-- [githug](./githug.md) 游戏通关答案 - 共 56 关
-- 场景补充练习
+Git 常见操作场景汇总
 
 1. init 初始化仓库
 2. config 查看和设置 git 配置
@@ -59,4 +58,9 @@
 54. restore 恢复被删除的提交
 55. conflict 解决冲突
 56. submodule 把第三方库当作子模块
-57. contribute
+57. git 多账户配置
+58. contribute
+
+其他练习
+
+- [githug](./githug.md) 游戏通关答案 - 共 56 关

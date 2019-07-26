@@ -143,6 +143,20 @@ $ git branch --list
 git config --get commit.template
 ```
 
+### 无权限 push
+
+提示错误
+
+```bash
+ssh: connect to host ssh.github.com port 443: Network is down
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+可能网络问题
+
 参考：
 
 - [与忽略文件 .gitignore 的斗智斗勇](https://blog.csdn.net/qq_32452623/article/details/75264547)
