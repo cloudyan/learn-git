@@ -1,3 +1,3 @@
-# Git 指南
+# Git 精简教程
 
-[详情](./docs)
+[docs](./docs)

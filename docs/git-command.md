@@ -153,6 +153,7 @@
 
     # 新建一个分支，但依然停留在当前分支
     $ git branch [new-branch]
+    $ git branch -m <branch-name> <branch-new-name>
 
     # 新建一个分支，并切换到该分支
     $ git checkout -b [new-branch]

@@ -1,6 +1,6 @@
 # 练习 Git
 
-Git 常见操作场景汇总
+Git 场景练习
 
 1. init 初始化仓库
 2. config 查看和设置 git 配置
@@ -59,8 +59,21 @@ Git 常见操作场景汇总
 55. conflict 解决冲突
 56. submodule 把第三方库当作子模块
 57. git 多账户配置
-58. contribute
+58. 最后一次提交 commit 信息填写有误，如何修正
+59. 新建分支时名字拼错了，如何修正
+60. 如果已经推送到远程了呢
+61. 不小心将所有更改提交到主分支
+62. 忘了将文件添加到最后一次提交
+63. 将错误的文件添加到仓库
+64. 不小心把自己的开发分支删除了，如何找回
+65. contribute
 
 其他练习
 
 - [githug](./githug.md) 游戏通关答案 - 共 56 关
+
+参考：
+
+- githug
+- https://github.com/geeeeeeeeek/git-recipes
+- https://my.oschina.net/javayou/blog/3081401
