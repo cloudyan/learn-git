@@ -157,9 +157,55 @@ and the repository exists.
 
 可能网络问题
 
+### git push 遇到错误
+
+```bash
+remote: error: GH007: Your push would publish a private email address.
+remote: You can make your email public or disable this protection by visiting:
+remote: http://github.com/settings/emails
+To github.com:dwdjs/xxx.git
+! [remote rejected] dev -> dev (push declined due to email privacy restrictions)
+error: failed to push some refs to 'git@github.com:dwdjs/xxx.git'
+```
+
+由于设置了邮箱为隐私邮箱，有两种解决方式：
+
+1. 在 github 上 setting -> Emails -> Keep my email addresses private 去掉勾选。
+2. 或者命令行中配置邮箱为 username@users.noreply.github.com，操作的配置文件为~/.gitconfig
+
+```bash
+git config --global user.email 'username@users.noreply.github.com'
+
+# 查看所有配置
+git config --list
+```
+
+### git push 遇到错误
+
+```bash
+error: RPC failed; curl 92 HTTP/2 stream 0 was not closed cleanly: PROTOCOL_ERROR (err 1)
+fatal: the remote end hung up unexpectedly
+```
+
+这是因为
+
+1. git 有两种拉代码的方式，一个是 HTTP，另一个是 ssh。git 的 HTTP 底层是通过 curl 的。
+2. 使用的http2协议 `HTTP/2` 与 `Proxy-Connection` 响应头头不兼容
+
+解决办法
+
+- git 仓库改用 http1.1
+- 或 改用 ssh 拉取代码（推荐）
+
+- https://blog.csdn.net/chenyyhh92/article/details/79421091
+- https://blog.csdn.net/qq_42150559/article/details/95354249
+- https://juejin.im/entry/5a0d59bf6fb9a0451543702d
+
 参考：
 
 - [与忽略文件 .gitignore 的斗智斗勇](https://blog.csdn.net/qq_32452623/article/details/75264547)
 - [Git 原理：15分钟成为 GIT 专家](https://www.jianshu.com/p/c221f99f0bfd)
 - [HEAD^ 与 HEAD~ 的区别](https://stackoverflow.com/questions/2221658/whats-the-difference-between-head-and-head-in-git)
 - https://github.com/521xueweihan/git-tips
+- https://www.cnblogs.com/gerrydeng/p/7170531.html
+- https://blog.csdn.net/chenyyhh92/article/details/79421091
