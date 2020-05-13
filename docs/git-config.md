@@ -167,3 +167,4 @@ remote pull push的时候有问题，因为要设置邮箱问题了 pull的时�
 
 - https://gist.github.com/suziewong/4378434
 - https://cloud.tencent.com/developer/article/1418214
+- https://help.github.com/cn/github/authenticating-to-github/using-ssh-over-the-https-port
