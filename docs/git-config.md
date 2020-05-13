@@ -129,7 +129,7 @@ Host git@github.com
   User yue
   IdentityFile ~/.ssh/yue_rsa
 
-# 公司的gitlab
+# 公司的 gitlab
 Host git@gitlab.xxx.com
   HostName https://gitlab.xxx.com
   User xiaohan
