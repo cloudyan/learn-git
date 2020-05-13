@@ -136,20 +136,27 @@ Host git@gitlab.xxx.com
   IdentityFile ~/.ssh/xiaohan_rsa
 
 # 配置示例
-# Host git@github.com
-#   HostName https://github.com
-#   User cloudyan
+# Host myhost     # 这里是自定义的host简称，以后连接远程服务器就可以用命令ssh myhost，如 git@github.com [注意下面有缩进]
+#   HostName        # 主机名可用ip也可以是域名(如:github.com或者bitbucket.org)
+#   User            # 登录用户名(如：xiaohan)
+#   IdentityFile    # 证书文件路径（如~/.ssh/xiaohan_rsa)
+#   # Port 22       # 服务器open-ssh端口（默认：22，默认时一般不写此行）
+#   # IdentityFile  # C:\\Users\\Alice\\.ssh\\id_rsa
+#   # PreferredAuthentications 配置登录时用什么权限认证--可设为 publickey,password publickey,keyboard-interactive等
+
+# Host github
+#   HostName github.com
+#   User xiaohan
 #   IdentityFile ~/.ssh/xiaohan_rsa
-#   # Port 22
-#   # IdentityFile C:\\Users\\Alice\\.ssh\\id_rsa
-#   # PreferredAuthentications
 
 # 说明
+# Host          别名
 # HostName      这个是真实的域名地址
 # User          配置使用用户名
 # IdentityFile  这里是id_rsa的地址
-# PreferredAuthentications 配置登录时用什么权限认证--可设为 publickey,password publickey,keyboard-interactive等
 ```
+
+其规则就是：从上至下读取config的内容，在每个Host下寻找对应的私钥。这里将GitHub SSH仓库地址中的git@github.com替换成新建的Host别名如：github2，那么原地址是：git@github.com:funpeng/Mywork.git，替换后应该是：github2:funpeng/Mywork.git.
 
 这种情况下，需要几点注意
 
@@ -165,6 +172,8 @@ remote pull push的时候有问题，因为要设置邮箱问题了 pull的时�
 
 参考：
 
+- https://gist.github.com/yeungeek/596984fd9e53d6c36c0d
+- https://www.cnblogs.com/BeginMan/p/3548139.html
 - https://gist.github.com/suziewong/4378434
 - https://cloud.tencent.com/developer/article/1418214
 - https://help.github.com/cn/github/authenticating-to-github/using-ssh-over-the-https-port
