@@ -80,15 +80,31 @@ git config [--global] --unset user.email
 
 `ssh-keygen -m rsa -C "your mail"` （当前目录） 然后可以命名默认id_rsa 或者id_rsa_second 把对应的pub放到公共服务器上。
 
-### 多账号配置问题
+### git 多账号配置问题
 
-令不同 Host 实际映射到同一 HostName，但密钥文件不同。Host 前缀可自定义如xxx。配置文件 `.ssh/config`，
+令不同 Host 实际映射到同一 HostName，但密钥文件不同。Host 前缀可自定义如xxx。配置文件 mac 为 `/etc/ssh/ssh_config` (不是 `~/.ssh/config`)
 
 如果是 Windows，配置为 `C:\Program Files\Git\etc\ssh\ssh_config`
 
 ```conf
 # 配置示例
 # 该文件用于配置私钥对应的服务器
+
+# 说明
+# 该文件的主要作用就是指明各个 git 帐号对应的 User 以及 IdentityFile 的文件位置。
+# TIP: 当配置完毕后，需要取消全局的用户名及邮箱配置，需要在各个项目 repo 中应用自己的用户名以及邮箱：
+# 1.取消 global
+# git config --global --unset user.name
+# git config --global --unset user.email
+
+# 2.设置每个项目 repo 的自己的 user.email
+# git config user.email "xxx1@qq.com"
+# git config user.name "xxx1"
+# 如此，各个 git 帐号间就可以“井水不犯河水”了。
+# 测试查找该配置文件的位置 `ssh -vT git@github.com` 第二行内容
+
+# 示例如下
+
 
 # test
 # 测试github
@@ -109,20 +125,21 @@ Host git@github.com
 # 建一个github别名，新建的帐号使用这个别名做克隆和更新
 Host git@github.com
   HostName https://github.com
+  # Port 22
   User yue
   IdentityFile ~/.ssh/yue_rsa
 
 # 公司的gitlab
 Host git@gitlab.xxx.com
   HostName https://gitlab.xxx.com
-  User git
-  IdentityFile ~/.ssh/id_rsa
+  User xiaohan
+  IdentityFile ~/.ssh/xiaohan_rsa
 
 # 配置示例
 # Host git@github.com
 #   HostName https://github.com
 #   User cloudyan
-#   IdentityFile ~/.ssh/id_rsa
+#   IdentityFile ~/.ssh/xiaohan_rsa
 #   # Port 22
 #   # IdentityFile C:\\Users\\Alice\\.ssh\\id_rsa
 #   # PreferredAuthentications
@@ -137,3 +154,16 @@ Host git@gitlab.xxx.com
 这种情况下，需要几点注意
 
 remote pull push的时候有问题，因为要设置邮箱问题了 pull的时候识别的是邮箱，2个github账号，2个邮箱，我们自然不能使用global的user.email了
+
+## 总结
+
+1. 使用命令 “ssh -vT git@xxx.com” 查看 ssh_config 文件的位置
+   1. mac: `/etc/ssh/ssh_config`
+2. 进入 ssh_config 文件，配置各个 git 帐号的 User 以及 IdentityFIle
+3. 在各个项目中配置好 user.name 以及 user.email
+4. 在各个 git 帐号间尽情穿梭吧~
+
+参考：
+
+- https://gist.github.com/suziewong/4378434
+- https://cloud.tencent.com/developer/article/1418214
