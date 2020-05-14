@@ -148,8 +148,6 @@ Host git@gitlab.xxx.com
 
 # username@gitlab.xxx.com
 
-
-
 # Host github
 #   HostName github.com
 #   User xiaohan
