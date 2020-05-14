@@ -123,7 +123,6 @@ Host github.com
   # Port 22
   # IdentityFile C:\\Users\\Alice\\.ssh\\id_rsa
 
-
 # second user(xxx2@qq.com)
 # 建一个github别名，新建的帐号使用这个别名做克隆和更新
 Host github2
