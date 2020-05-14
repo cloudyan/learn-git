@@ -80,7 +80,7 @@ git config [--global] --unset user.email
 
 生成ssh key
 
-`ssh-keygen -t rsa` （当前目录 ~/.ssh） 然后可以命名默认id_rsa 或者id_rsa_second 把对应的pub放到公共服务器上。
+`ssh-keygen -t rsa -b 4096 -C "your_email@example.com"` （当前目录 ~/.ssh） 然后可以命名默认id_rsa 或者id_rsa_second 把对应的pub放到公共服务器上。
 
 ### git 多账号配置问题
 
@@ -145,6 +145,8 @@ Host git@gitlab.xxx.com
 #   # Port 22       # 服务器open-ssh端口（默认：22，默认时一般不写此行）
 #   # IdentityFile  # C:\\Users\\Alice\\.ssh\\id_rsa
 #   # PreferredAuthentications 配置登录时用什么权限认证--可设为 publickey,password publickey,keyboard-interactive等
+
+# username@gitlab.xxx.com
 
 # Host github
 #   HostName github.com
