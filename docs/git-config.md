@@ -84,7 +84,7 @@ git config [--global] --unset user.email
 
 ### git 多账号配置问题
 
-令不同 Host 实际映射到同一 HostName，但密钥文件不同。Host 前缀可自定义如xxx。配置文件 mac 为 `/etc/ssh/ssh_config` (不是 `~/.ssh/config`)
+令不同 Host 实际映射到同一 HostName，但密钥文件不同。Host 前缀可自定义如xxx。配置文件 mac 为 `/etc/ssh/ssh_config` (推荐使用 `~/.ssh/config`)
 
 如果是 Windows，配置为 `C:\Program Files\Git\etc\ssh\ssh_config`
 
@@ -116,26 +116,26 @@ git config [--global] --unset user.email
 
 # Default github user(xxx1@qq.com)
 # HostName 这个是真实的域名地址
-Host git@github.com
-  HostName https://github.com
-  User cloudyan
+Host github.com
+  HostName github.com
   IdentityFile ~/.ssh/id_rsa
+  # User cloudyan
   # Port 22
   # IdentityFile C:\\Users\\Alice\\.ssh\\id_rsa
 
 
 # second user(xxx2@qq.com)
 # 建一个github别名，新建的帐号使用这个别名做克隆和更新
-Host git@github.com
-  HostName https://github.com
+Host github2
+  HostName github.com
   # Port 22
-  User yue
+  ; User yue
   IdentityFile ~/.ssh/yue_rsa
 
 # 公司的 gitlab
-Host git@gitlab.xxx.com
-  HostName https://gitlab.xxx.com
-  User xiaohan
+Host gitlab.xxx.com
+  HostName gitlab.xxx.com
+  ; User xiaohan
   IdentityFile ~/.ssh/xiaohan_rsa
 
 # 配置示例
