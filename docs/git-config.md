@@ -78,7 +78,7 @@ git config [--global] --unset user.email
 
 生成ssh key
 
-`ssh-keygen -m rsa -C "your mail"` （当前目录） 然后可以命名默认id_rsa 或者id_rsa_second 把对应的pub放到公共服务器上。
+`ssh-keygen -t rsa` （当前目录 ~/.ssh） 然后可以命名默认id_rsa 或者id_rsa_second 把对应的pub放到公共服务器上。
 
 ### git 多账号配置问题
 
