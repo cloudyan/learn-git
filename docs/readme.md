@@ -8,6 +8,11 @@
 - [发行版本](./git-release.md)
 - [Commit message 和 Change log 编写指南](./git-commit-message.md)
 
+## 练习
+
+- https://learngitbranching.js.org/?NODEMO=&locale=zh_CN
+- https://github.com/Gazler/githug
+
 ## 文档
 
 ![Pro Git 2](https://git-scm.com/images/progit2.png)
