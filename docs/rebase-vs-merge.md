@@ -10,7 +10,17 @@
 建议先读一遍 [Git详解-目录](https://git-scm.com/book/zh/v2/)
 
 - 什么时候我应该用 git merge?
+  - fast-forward 时
+- 什么时候使用 git merge --no-ff
 - 什么时候我应该使用 rebase?
+  - rebase 用于使历史记录中的分支路径更清晰，存储库结构是线性的
+- 什么时候使用 rebase --onto?
+
+rebase和merge之间的唯一区别是：
+
+- 生成的历史树结构（通常只在查看提交图时才会显着）是不同的（一个将具有分支，另一个将不具有）。
+- 合并通常会创建一个额外的提交（例如树中的节点）。
+- 合并和rebase将以不同方式处理冲突。 Rebase将一次提交一个提交的冲突，其中merge将同时呈现它们。
 
 ## rebase黄金定律
 
