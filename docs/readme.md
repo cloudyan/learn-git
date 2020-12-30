@@ -22,6 +22,10 @@
 - [**强烈推荐**]中文版 [https://git-scm.com/book/zh/v2/](https://git-scm.com/book/zh/v2/)
 - [Learn Version Control with Git](https://www.git-tower.com/learn/git/ebook/cn/command-line/introduction)
 
+### gerrit
+
+gerrit 用于审查和交付集成
+
 Git详解教程列表：
 
 更新下面的链接到官网中文版（2017-02-17）
