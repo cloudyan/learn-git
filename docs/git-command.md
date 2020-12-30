@@ -180,6 +180,8 @@
 
     # 合并指定分支到当前分支（可能出现冲突conflicts，需要手工合并这些冲突）
     $ git merge [branch]
+    # 合并上一个分支
+    $ git merge -
 
     # 选择一个commit，合并进当前分支
     $ git cherry-pick [commit]
@@ -375,7 +377,7 @@
     > 永远不要在public 分支上使用git rebase！
 
     ```bash
-    # Squash 多个commit，在发起 PR 之前，应该把多个 commit 合并成一个（前提是该分支只有你一个人开发，且没有根 master 合并过）
+    # Squash 多个commit，在发起 PR 之前，应该把多个 commit 合并成一个（前提是该分支只有你一个人开发，且没有跟 master 合并过）
 
     # 合并多次提交纪录(commit 次数太多，不利于 Code Review，不利于排查问题)
     $ git rebase -i HEAD~4
@@ -387,7 +389,11 @@
     # 合并一段 commits
     $ git rebase --onto [base-branch] [from-branch] [to-branch]
     # 用于修正在错误点拉出分支并 committed 代码的问题
-    # git rebase --onto master wrong_branch readme-update
+    # git rebase --onto master wrong_branch mine-update
+    # 解释 git rebase --onto A B C
+    # 切片 (B C]左开右闭
+    # 示例如
+    #
 
     # `--abort` 参数终止 rebase
     $ git rebase --abort
