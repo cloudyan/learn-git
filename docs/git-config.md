@@ -107,8 +107,8 @@ git config [--global] --unset user.email
 
 # 示例如下
 
-
 # test
+# 配置完成，可以使用下面的命令测试
 # 测试github
 # ssh -T git@github.com
 # 测试oschina
