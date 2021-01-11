@@ -8,6 +8,11 @@
 - [发行版本](./git-release.md)
 - [Commit message 和 Change log 编写指南](./git-commit-message.md)
 
+## 练习
+
+- https://learngitbranching.js.org/?NODEMO=&locale=zh_CN
+- https://github.com/Gazler/githug
+
 ## 文档
 
 ![Pro Git 2](https://git-scm.com/images/progit2.png)
@@ -16,6 +21,10 @@
   - https://git-scm.com/docs
 - [**强烈推荐**]中文版 [https://git-scm.com/book/zh/v2/](https://git-scm.com/book/zh/v2/)
 - [Learn Version Control with Git](https://www.git-tower.com/learn/git/ebook/cn/command-line/introduction)
+
+### gerrit
+
+gerrit 用于审查和交付集成
 
 Git详解教程列表：
 

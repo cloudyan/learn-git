@@ -13,6 +13,7 @@ Git 作为一个源码管理系统，不可避免涉及到多人协作。
 下面是三种广泛使用的工作流程：
 
 - 最早诞生、并得到广泛采用的一种工作流程，就是 [Git flow](https://nvie.com/posts/a-successful-git-branching-model/)。
+  - 此文作者 2020-03-05 反思时，提到推荐使用更简单的工作流程 [GitHub flow](https://guides.github.com/introduction/flow/)
   - Git flow的优点是清晰可控，缺点是相对复杂，需要同时维护两个长期分支。大多数工具都将master当作默认分支，可是开发是在develop分支进行的，这导致经常要切换分支，非常烦人。
   - 这个模式是基于"版本发布"的，目标是一段时间以后产出一个新版本。
   - 不适用于网站项目的"持续发布"，代码一有变动就部署一次。此时，master分支和develop分支的差别不大，没必要维护两个长期分支。
@@ -198,3 +199,4 @@ git | feature| -| start   -| name
 - [分布式-Git-分布式工作流程](https://git-scm.com/book/zh/v2/分布式-Git-分布式工作流程)
 - [Git分支管理策略](http://www.ruanyifeng.com/blog/2012/07/git.html)
 - [高效git工作流](https://juejin.im/post/5b2b76e251882574934c388d)
+- [GitHub flow](https://guides.github.com/introduction/flow/)
