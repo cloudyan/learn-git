@@ -1,5 +1,7 @@
 # git-config
 
+- https://git-scm.com/docs/git-config.html
+
 ## 安装
 
 test
