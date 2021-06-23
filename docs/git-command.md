@@ -415,6 +415,33 @@
     $ git add -i
     ```
 
+11. Git 如何同步上游分支代码?
+
+    当参与开源项目或者采用 Fork 模式来协同开发时，常常会在自己的 Fork 分支上提交各种修改。上游仓库，也就是源分支代码更新了，我们 Fork 的下游分支，怎么同步上游仓库的更新呢？
+
+    ```bash
+    # 第一步：查看所有远程库的远程地址
+    git remote -v
+
+    # 第二步：添加源分支 URL
+    git remote add upstream [源项目URL]
+
+    # 第三步：检查所有远程库的远程地址
+    git remote -v
+
+    # 第四步：从源分支获取最新的代码
+    git fetch upstream
+
+    # 第五步：切换到主分支
+    git checkout master
+
+    # 第六步：合并本地分支和源分支
+    git merge upstream/master
+
+    # 第七步：Push 到 Fork 分支
+    git push
+    ```
+
 用的多了就熟练了，Git命令行确实很简单而且功能十分强悍！建议多用用命令行模式。
 
 ## 进阶
@@ -441,7 +468,7 @@ reset soft
 首先，Git 提交可以有多个父级，使用 `^` 你可以找到任何提交的父级，而不仅仅是HEAD。你也可以追溯到几代人，使用 `~`。
 
 - HEAD^ 表示当前分支的提交的第一个父级，是 HEAD^1 的缩写
-- HEAD~ 意味着主分支的祖父母，在歧义的情况下支持第一个父母
+- HEAD~ 意味着主分支的祖父母，在歧义的情况下指第一个父母
 - 这些说明符可以被任意连接，例如，topic~3^2。
 - 而HEAD@{2}变量捕获HEAD运动的历史，用于git reflog或git stash list
 
