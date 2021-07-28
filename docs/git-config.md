@@ -92,6 +92,34 @@ ssh-keygen（基于密匙的安全验证）：需要依靠密钥进行安全验�
 
 ### git 多账号配置问题
 
+可参考：https://docs.gitlab.com/ce/ssh/index.html
+
+```conf
+# User1 Account Identity
+Host <user_1.gitlab.com>
+  Hostname gitlab.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/<example_ssh_key1>
+
+# User2 Account Identity
+Host <user_2.gitlab.com>
+  Hostname gitlab.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/<example_ssh_key2>
+```
+
+现在，要克隆 的存储库user_1，请user_1.gitlab.com在git clone命令中使用：
+
+```bash
+git clone git@<user_1.gitlab.com>:gitlab-org/gitlab.git
+```
+
+要更新别名为 的先前克隆的存储库origin：
+
+```bash
+git remote set-url origin git@<user_1.gitlab.com>:gitlab-org/gitlab.git
+```
+
 令不同 Host 实际映射到同一 HostName，但密钥文件不同。Host 前缀可自定义如xxx。配置文件 mac 为 `/etc/ssh/ssh_config` (推荐使用 `~/.ssh/config`)
 
 如果是 Windows，配置为 `C:\Program Files\Git\etc\ssh\ssh_config`
@@ -117,35 +145,40 @@ ssh-keygen（基于密匙的安全验证）：需要依靠密钥进行安全验�
 
 # test
 # 配置完成，可以使用下面的命令测试
-# 测试github
+# 测试时替换掉 example.com
+# ssh -T git@example.com
+# 测试 github
 # ssh -T git@github.com
-# 测试oschina
+# 例如 码云
+# ssh -T git@gitee.com
+# 例如 coding
+# ssh -T git@git.coding.net
+# 测试 oschina
 # ssh -T git@git.oschina.net
+# bitbucket
+# ssh -T git@bitbucket.org
 # 测试gitlab(可替换gitlab.com为您的 GitLab 实例域)
 # ssh -T git@gitlab.com
+
 
 # Default github user(xxx1@qq.com)
 # HostName 这个是真实的域名地址
 Host github.com
   HostName github.com
   IdentityFile ~/.ssh/github.com_rsa
-  # User cloudyan
-  # Port 22
-  # IdentityFile C:\\Users\\Alice\\.ssh\\id_rsa
 
 # second user(xxx2@qq.com)
 # 建一个github别名，新建的帐号使用这个 Host 别名做克隆和更新
 Host github2
   HostName github.com
-  # Port 22
-  ; User yue
   IdentityFile ~/.ssh/yue_rsa
 
-# 公司的 gitlab
+# 公司的 gitlab (xxx 改为公司域，按照以下格式，已验证可用)
+# ssh -T git@gitlab.xxx.net 测试是否连通
 Host gitlab.xxx.com
   HostName gitlab.xxx.com
-  ; User xiaohan
   IdentityFile ~/.ssh/gitlab.xxx_rsa
+  # PreferredAuthentications publickey # 可选
 
 # 配置示例
 # Host myhost     # 这里是自定义的host简称，以后连接远程服务器就可以用命令ssh myhost，如 git@github.com [注意下面有缩进]
