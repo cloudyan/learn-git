@@ -90,8 +90,6 @@ ssh-keygen（基于密匙的安全验证）：需要依靠密钥进行安全验�
 - -b 指定密钥长度。对于RSA密钥，最小要求768位，默认是2048位。命令中的4096指的是RSA密钥长度为4096位。DSA密钥必须恰好是1024位(FIPS 186-2 标准的要求)。
 - -C 表示要提供一个新注释，用于识别这个密钥。`""`里面不一定非要填邮箱，可以是任何内容，邮箱仅仅是识别用的key。
 
-默认名称是 `id_rsa`， 如果你使用了自定义的名称，如 github.com_rsa，需要执行 `ssh-add ~/.ssh/github.com_rsa`
-
 ### git 多账号配置问题
 
 令不同 Host 实际映射到同一 HostName，但密钥文件不同。Host 前缀可自定义如xxx。配置文件 mac 为 `/etc/ssh/ssh_config` (推荐使用 `~/.ssh/config`)
@@ -123,6 +121,8 @@ ssh-keygen（基于密匙的安全验证）：需要依靠密钥进行安全验�
 # ssh -T git@github.com
 # 测试oschina
 # ssh -T git@git.oschina.net
+# 测试gitlab(可替换gitlab.com为您的 GitLab 实例域)
+# ssh -T git@gitlab.com
 
 # Default github user(xxx1@qq.com)
 # HostName 这个是真实的域名地址
@@ -179,12 +179,12 @@ remote pull push的时候有问题，因为要设置邮箱问题了 pull的时�
 ## 总结
 
 1. `ssh-keygen -t rsa -b 4096` 生成密钥，默认为 `id_rsa`
-2. 将密钥添加到密钥列表 `ssh-add xxx_rsa`，默认名称不用添加(添加后无需配置 `~/.ssh/config`)
-3. 使用命令 “ssh -vT git@xxx.com” 查看 ssh_config 文件的位置
+   1. 将密钥添加到密钥列表 `ssh-add xxx_rsa`，默认名称不用添加(添加后无需配置 `~/.ssh/config`), 这种添加是临时的，重启就没了
+2. 使用命令 “ssh -vT git@xxx.com” 查看 ssh_config 文件的位置
    1. mac: `/etc/ssh/ssh_config`
-4. 进入 ssh_config 文件，配置各个 git 帐号的 User 以及 IdentityFIle
-5. 在各个项目中配置好 user.name 以及 user.email
-6. 在各个 git 帐号间尽情穿梭吧~
+3. 进入 ssh_config 文件，配置各个 git 帐号的 User 以及 IdentityFIle
+4. 在各个项目中配置好 user.name 以及 user.email
+5. 在各个 git 帐号间尽情穿梭吧~
 
 `ssh-add -l` 查看所有的密钥列表
 
