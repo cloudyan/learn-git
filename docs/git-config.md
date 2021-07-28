@@ -161,6 +161,8 @@ git remote set-url origin git@<user_1.gitlab.com>:gitlab-org/gitlab.git
 # ssh -T git@gitlab.com
 
 
+# 为便于独立控制，可针对每个平台独立密钥
+
 # Default github user(xxx1@qq.com)
 # HostName 这个是真实的域名地址
 Host github.com
@@ -174,11 +176,15 @@ Host github2
   IdentityFile ~/.ssh/yue_rsa
 
 # 公司的 gitlab (xxx 改为公司域，按照以下格式，已验证可用)
-# ssh -T git@gitlab.xxx.net 测试是否连通
+# ssh -T git@gitlab.xxx.com 测试是否连通
 Host gitlab.xxx.com
-  HostName gitlab.xxx.com
-  IdentityFile ~/.ssh/gitlab.xxx_rsa
+  IdentityFile ~/.ssh/gitlab.xxx.com_rsa
+  # HostName gitlab.xxx.com # 可选
   # PreferredAuthentications publickey # 可选
+
+# ssh -T git@gitee.com
+Host gitee.com
+  IdentityFile ~/.ssh/gitee.com_rsa
 
 # 配置示例
 # Host myhost     # 这里是自定义的host简称，以后连接远程服务器就可以用命令ssh myhost，如 git@github.com [注意下面有缩进]
