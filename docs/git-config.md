@@ -84,6 +84,14 @@ git config [--global] --unset user.email
 
 `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"` （当前目录 ~/.ssh） 然后可以命名默认id_rsa 或者id_rsa_second 把对应的pub放到公共服务器上。
 
+ssh-keygen（基于密匙的安全验证）：需要依靠密钥进行安全验证，必须为自己创建一对密钥，并把公用密钥放在需要访问的服务器上。
+
+- -t 即指定密钥的类型。密钥的类型有两种，一种是RSA，一种是DSA。
+- -b 指定密钥长度。对于RSA密钥，最小要求768位，默认是2048位。命令中的4096指的是RSA密钥长度为4096位。DSA密钥必须恰好是1024位(FIPS 186-2 标准的要求)。
+- -C 表示要提供一个新注释，用于识别这个密钥。`""`里面不一定非要填邮箱，可以是任何内容，邮箱仅仅是识别用的key。
+
+默认名称是 `id_rsa`， 如果你使用了自定义的名称，如 github.com_rsa，需要执行 `ssh-add ~/.ssh/github.com_rsa`
+
 ### git 多账号配置问题
 
 令不同 Host 实际映射到同一 HostName，但密钥文件不同。Host 前缀可自定义如xxx。配置文件 mac 为 `/etc/ssh/ssh_config` (推荐使用 `~/.ssh/config`)
@@ -120,13 +128,13 @@ git config [--global] --unset user.email
 # HostName 这个是真实的域名地址
 Host github.com
   HostName github.com
-  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/github.com_rsa
   # User cloudyan
   # Port 22
   # IdentityFile C:\\Users\\Alice\\.ssh\\id_rsa
 
 # second user(xxx2@qq.com)
-# 建一个github别名，新建的帐号使用这个别名做克隆和更新
+# 建一个github别名，新建的帐号使用这个 Host 别名做克隆和更新
 Host github2
   HostName github.com
   # Port 22
@@ -137,7 +145,7 @@ Host github2
 Host gitlab.xxx.com
   HostName gitlab.xxx.com
   ; User xiaohan
-  IdentityFile ~/.ssh/xiaohan_rsa
+  IdentityFile ~/.ssh/gitlab.xxx_rsa
 
 # 配置示例
 # Host myhost     # 这里是自定义的host简称，以后连接远程服务器就可以用命令ssh myhost，如 git@github.com [注意下面有缩进]
@@ -170,15 +178,17 @@ remote pull push的时候有问题，因为要设置邮箱问题了 pull的时�
 
 ## 总结
 
-1. 使用命令 “ssh -vT git@xxx.com” 查看 ssh_config 文件的位置
+1. `ssh-keygen -t rsa -b 4096` 生成密钥，默认为 `id_rsa`
+2. 将密钥添加到密钥列表 `ssh-add xxx_rsa`，默认名称不用添加(添加后无需配置 `~/.ssh/config`)
+3. 使用命令 “ssh -vT git@xxx.com” 查看 ssh_config 文件的位置
    1. mac: `/etc/ssh/ssh_config`
-2. 进入 ssh_config 文件，配置各个 git 帐号的 User 以及 IdentityFIle
-3. 在各个项目中配置好 user.name 以及 user.email
-4. 在各个 git 帐号间尽情穿梭吧~
+4. 进入 ssh_config 文件，配置各个 git 帐号的 User 以及 IdentityFIle
+5. 在各个项目中配置好 user.name 以及 user.email
+6. 在各个 git 帐号间尽情穿梭吧~
 
 `ssh-add -l` 查看所有的密钥列表
 
-ssh-add的作用主要将密钥添加到 ssh-agent 的高速缓存中，这样在当前会话中就不需要再次输入密码了 具体的可以参考 [SSH Keys](https://wiki.archlinux.org/index.php/SSH_Keys_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+ssh-add的作用主要将密钥添加到 ssh-agent 的高速缓存中，这样在当前会话中就不需要再次输入密码了。具体的可以参考 [SSH Keys](https://wiki.archlinux.org/index.php/SSH_Keys_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
 参考：
 
