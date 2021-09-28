@@ -512,3 +512,5 @@ J = F^2  = B^3^2   = A^^3^2
 - [git - 简明指南](https://rogerdudler.github.io/git-guide/index.zh.html)
 - [diff](https://www.ruanyifeng.com/blog/2012/08/how_to_read_diff.html)
   - https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-diff.html
+- [Pull Request 的命令行管理](http://www.ruanyifeng.com/blog/2017/07/pull_request.html)
+- [Git request-pull　和 Github pull request](https://codingnote.com/2018/01/04/git-request-pull/)
