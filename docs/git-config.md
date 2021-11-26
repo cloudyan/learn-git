@@ -146,22 +146,24 @@ git remote set-url origin git@<user_1.gitlab.com>:gitlab-org/gitlab.git
 # test
 # 配置完成，可以使用下面的命令测试
 # 测试时替换掉 example.com
-# ssh -T git@example.com
+#     ssh -T git@example.com
 # 测试 github
-# ssh -T git@github.com
-# 例如 码云
-# ssh -T git@gitee.com
-# 例如 coding
-# ssh -T git@git.coding.net
+#     ssh -T git@github.com
+# 测试 码云
+#     ssh -T git@gitee.com
+# 测试 coding
+#     ssh -T git@git.coding.net
 # 测试 oschina
-# ssh -T git@git.oschina.net
-# bitbucket
-# ssh -T git@bitbucket.org
-# 测试gitlab(可替换gitlab.com为您的 GitLab 实例域)
-# ssh -T git@gitlab.com
+#     ssh -T git@git.oschina.net
+# 测试 bitbucket
+#     ssh -T git@bitbucket.org
+# 测试 gitlab(可替换gitlab.com为您的 GitLab 实例域)
+#     ssh -T git@gitlab.com
 
 
 # 为便于独立控制，可针对每个平台独立密钥
+
+
 
 # Default github user(xxx1@qq.com)
 # HostName 这个是真实的域名地址
