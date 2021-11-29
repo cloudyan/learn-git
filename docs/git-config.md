@@ -136,6 +136,7 @@ git remote set-url origin git@<user_1.gitlab.com>:gitlab-org/gitlab.git
 # git config --global --unset user.email
 
 # 2.设置每个项目 repo 的自己的 user.email
+#      如果多个 git 平台账号不同, 是无法使用 global 方案解决的, 仅有此法, 可使用 projj 自动处理
 # git config user.email "xxx1@qq.com"
 # git config user.name "xxx1"
 # 如此，各个 git 帐号间就可以“井水不犯河水”了。
