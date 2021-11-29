@@ -203,6 +203,14 @@ Host gitlab.xxx.com
 Host gitee.com
   IdentityFile ~/.ssh/gitee.com_rsa
 
+
+# 还看到有人这样配置 https://github.com/kryptco/kr/issues/276
+Host *
+  IdentityFile ~/.ssh/github.com_rsa
+  IdentityFile ~/.ssh/gitee.xxx.com_rsa
+  IdentityFile ~/.ssh/gitee.com_rsa
+  IdentityFile ~/.ssh/id_rsa
+
 # 配置示例
 # Host myhost     # 这里是自定义的host简称，以后连接远程服务器就可以用命令ssh myhost，如 git@github.com [注意下面有缩进]
 #   HostName        # 主机名可用ip也可以是域名(如:github.com或者bitbucket.org)
