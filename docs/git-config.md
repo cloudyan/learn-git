@@ -106,6 +106,12 @@ ssh-keygen（基于密匙的安全验证）：需要依靠密钥进行安全验�
       - ssh 密钥配置(最简单的做法是都使用默认的 id_rsa.pub, 同一密钥可以复用, 也可以用 Host 区分不同的密钥配置)
       - 账号配置(邮箱, 用户名), global 配置不能适配, 此配置需要跟着项目走
 
+有时可能需要重置下 `~/.ssh/known_hosts`(原因可能是系统重装, IP 冲突等等), 直接删除即可, 了解更多可以参看
+
+- https://linuxhint.com/known-hosts-file-ssh-linux/
+- [SSH known_hosts](https://zdyxry.github.io/2019/12/06/SSH-known-hosts-%E6%98%BE%E7%A4%BA-IP-%E5%9C%B0%E5%9D%80/)
+- https://blog.rootshell.be/2010/11/03/bruteforcing-ssh-known_hosts-files/
+
 可参考：https://docs.gitlab.com/ce/ssh/index.html
 
 ```conf
