@@ -184,8 +184,7 @@ git remote set-url origin git@<user_1.gitlab.com>:gitlab-org/gitlab.git
 
 # 为便于独立控制，可针对每个平台独立密钥
 
-
-
+# 格式如下
 # Default github user(xxx1@qq.com)
 # HostName 这个是真实的域名地址
 Host github.com
@@ -208,7 +207,6 @@ Host gitlab.xxx.com
 # ssh -T git@gitee.com
 Host gitee.com
   IdentityFile ~/.ssh/gitee.com_rsa
-
 
 # 还看到有人这样配置 https://github.com/kryptco/kr/issues/276
 Host *
@@ -238,6 +236,47 @@ Host *
 # HostName      这个是真实的域名地址
 # User          配置使用用户名
 # IdentityFile  这里是id_rsa的地址
+```
+
+以下是我的配置，供参考
+
+```conf
+# Default github user(xxx1@qq.com)
+# HostName 这个是真实的域名地址
+# ssh-keygen -t rsa -b 4096 生成密钥
+
+# 配置文件参数
+# Host: Host可以看作是一个你要识别的模式，对识别的模式，进行配置对应的的主机名和ssh文件
+# HostName: 要登录主机的主机名
+# User: 登录名
+# IdentityFile: 指明上面User对应的identityFile路径
+
+# https://docs.gitlab.com/ce/ssh/index.html
+# ssh -T git@gitlab.xxx.com 测试是否连通
+Host gitlab.xxx.com
+  IdentityFile ~/.ssh/gitlab.xxx.com_rsa
+
+# ssh -T git@gitee.com
+Host gitee.com
+  HostName gitee.com
+  IdentityFile ~/.ssh/gitee.com_rsa
+
+# [ssh: connect to host github.com port 22: Operation timed out](https://www.yuque.com/cloudyan/faq/cb20h1)
+# ssh -T git@github.com
+# Host github.com
+#   HostName github.com
+#   IdentityFile ~/.ssh/github.com_rsa
+
+# Enabling SSH connections over HTTPS
+# ssh -T -p 443 git@github.com
+Host github.com
+  HostName ssh.github.com
+  IdentityFile ~/.ssh/github.com_rsa
+  Port 443
+
+# ssh -T git@e.coding.net
+Host e.coding.net
+  IdentityFile ~/.ssh/coding_rsa
 ```
 
 其规则就是：从上至下读取config的内容，在每个Host下寻找对应的私钥。这里将GitHub SSH仓库地址中的git@github.com替换成新建的Host别名如：github2，那么原地址是：git@github.com:funpeng/Mywork.git，替换后应该是：github2:funpeng/Mywork.git.
