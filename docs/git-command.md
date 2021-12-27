@@ -446,6 +446,18 @@
 
 ## 进阶
 
+删除 Git 历史记录中误提交的代码
+
+有时，发现误提交了用户名密码或某产品密钥等隐私配置信息，现在想要剔除历史记录中已提交的记录怎么办？
+
+```bash
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch yarn.lock' --prune-empty --tag-name-filter cat -- --all
+```
+
+如果你要删除的目标不是文件，而是文件夹，那么请在 `git rm --cached` 命令后面添加 `-r` 命令，表示递归的删除（子）文件夹和文件夹下的文件，类似于 `rm -rf` 命令。
+
+参考：https://www.cnblogs.com/shines77/p/3460274.html
+
 ### 关于撤销
 
 ![git-status](./img/git-status.png)
