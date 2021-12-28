@@ -262,6 +262,7 @@ Host gitee.com
   IdentityFile ~/.ssh/gitee.com_rsa
 
 # [ssh: connect to host github.com port 22: Operation timed out](https://www.yuque.com/cloudyan/faq/cb20h1)
+# 端口 22 链接超时的情况，可以将下面配置改为后面的 443 端口配置
 # ssh -T git@github.com
 # Host github.com
 #   HostName github.com
