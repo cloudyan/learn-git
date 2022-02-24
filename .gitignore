@@ -62,3 +62,4 @@ typings/
 
 temp/
 yarn.lock
+.DS_Store
