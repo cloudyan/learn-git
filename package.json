@@ -13,8 +13,8 @@
   "directories": {
     "doc": "docs"
   },
-  "dependencies": {},
   "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
     "inquirer": "^6.5.0",
     "vuepress": "^1.0.2"
   },
@@ -31,5 +31,10 @@
   "bugs": {
     "url": "https://github.com/deepjs-net/learn-git/issues"
   },
-  "homepage": "https://github.com/deepjs-net/learn-git#readme"
+  "homepage": "https://github.com/deepjs-net/learn-git#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
