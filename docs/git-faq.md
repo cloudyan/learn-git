@@ -6,7 +6,7 @@
 - `git commit -am 'file msg'` 添加了错误的 commit 信息想修改怎么操作？
 - 如何删除远程分支？批量呢？
 - 如何拉取一个本地不存在的远程分支？
-- 撤销已经 commit的修改，恢复到暂存区？恢复到工作区？
+- 撤销已经 commit 的修改，恢复为暂存区内容？恢复为工作区内容？
 - 分支关联远程链接后，如何撤销？
 - 查看差异，暂存区和工作区？仓库和工作区？仓库和暂存区？
 - 正在开发 feature 分支（有 dev 分支切出来），接着我们有个 dev 的 bug 需要修复，然后我们忘记checkout 到 dev 分支，而是直接在 feature 分支上新建，当我们发现分支建立在错误点的时候我们已经提交了好几个 commit 了，如何修正此问题？
@@ -22,6 +22,13 @@
   - [参考](./git-command)
 - 代码回滚：Reset、Checkout 和 Revert 如何选择?
   - https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-代码回滚：Reset、Checkout、Revert-的选择
+- 如何找回不小心删除的东西 `git reflog`
+- 提交后想在同一个 commit 里再加点东西怎么办
+- 如何修改最后一个 commit message `git commit --amend`
+- 提交代码到错误分支怎么办
+- 修改代码后执行 diff，为啥是空的
+- 如何 undo 近 5 个 commit
+- 如何 undo 某个文件的改动
 
 ### `git add .` 后想撤销怎么操作？
 
