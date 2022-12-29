@@ -61,3 +61,4 @@ Git 常用命令图表——[思维导图-Git.png](http://pic002.cnblogs.com/img
 - [gitsome](https://github.com/cloudyan/gitsome) A supercharged Git/GitHub command line interface (CLI).
 - [Best practices for Git branching](https://blogs.halodoc.io/best-practices-for-git/)
 - [Oh Shit, Git!?!](https://ohshitgit.com/)
+- [45 个 Git 经典操作场景，专治不会合代码](https://mp.weixin.qq.com/s/2p4m63JdsCjBpVku-WaZyA)
