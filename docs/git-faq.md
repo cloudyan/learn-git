@@ -22,13 +22,51 @@
   - [参考](./git-command)
 - 代码回滚：Reset、Checkout 和 Revert 如何选择?
   - https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-代码回滚：Reset、Checkout、Revert-的选择
+- 代码回滚操作了 revert, 后续想继续发布，做 merge request 时，没反应？再 revert 一次
 - 如何找回不小心删除的东西 `git reflog`
-- 提交后想在同一个 commit 里再加点东西怎么办
+- 提交后想在同一个 commit 里再加点东西怎么办 `git commit --amend --no-edit`
+  - 不小心执行这个命令，想重新作为新提交 `git rebase -i`
 - 如何修改最后一个 commit message `git commit --amend`
+- 不小心提交了一些应该在全新分支上的东西
+  - `git branch some-new-branch-name`
+  - `git reset HEAD~ --hard`
+  - `git checkout some-new-branch-name`
+  - 如果已经提交到公共分支
+    - 需要 `git reset HEAD@{number-of-commits-back}`
 - 提交代码到错误分支怎么办
-- 修改代码后执行 diff，为啥是空的
+  - `git reset HEAD~ --soft`
+  - `git stash`
+  - `git checkout name-of-the-correct-branch`
+  - `git stash pop`
+  - 也可以使用 `cherry-pick`
+    - `git checkout name-of-the-correct-branch`
+    - `git cherry-pick master`
+    - 操作完毕从 master 删除
+    - `git checkout master`
+    - `git reset HEAD~ --hard`
+- 修改代码后执行 diff，为啥是空的 `git diff --staged`
+  - [更多参考](https://stackoverflow.com/questions/16562121/what-is-the-difference-between-git-diff-head-vs-git-diff-staged)
+  - `git diff` View difference between Stage and Working Directory
+  - `git diff --staged` View difference between HEAD and Stage
+  - `git diff HEAD` View difference between HEAD and Working Directory
+  - `git status -v -v`
 - 如何 undo 近 5 个 commit
+  - `git log`
+  - `git revert [saved hash]`
 - 如何 undo 某个文件的改动
+  - `git checkout [saved hash] -- path/to/file`
+- 如何恢复本地分支跟远程一样(注意: 这些操作是不可逆的)
+  - `git fetch origin`
+  - `git checkout master`
+  - `git reset --hard origin/master`
+  - `git clean -d --force`
+
+![git-diff](./img/git-diff.png)
+
+- `HEAD` is a reference to the last commit in the currently checked-out branch.
+- Staging area, stage and index all mean the same thing
+- Unstaged changes exist in our **Working Directory**, but Git hasn’t recorded them into its version history yet.
+- Staged changes are a lot like unstaged changes, except that they’ve been marked to be committed the next time you run git commit
 
 ### `git add .` 后想撤销怎么操作？
 
