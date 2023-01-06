@@ -1,4 +1,4 @@
-# git-branch
+# git branch
 
 ## 分支管理策略
 

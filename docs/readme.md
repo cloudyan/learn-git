@@ -1,12 +1,20 @@
 # Git 指南
 
-- [安装配置](./git-config.md)
-- [常用命令](./git-command.md)
-- [常见问题](./git-faq.md)
-- [工作流 workflow](./git-workflow.md)
-- [Git 练习](./git-test.md)
+- [Git 初始化](./git-init.md)
+- [Git 安装配置](./git-config.md)
+- [Git 常用命令](./git-command.md)
+- [Git 常见问题](./git-faq.md)
+- [Git 工作流](./git-workflow.md)
+- [Git 场景练习](./git-test.md)
+- [githug 练习](./githug.md)
+- [45 个 Git 经典操作场景](./git-45.md)
 - [发行版本](./git-release.md)
+- [Git 子项目](./git-submodule.md)
 - [Commit message 和 Change log 编写指南](./git-commit-message.md)
+- [git cherry-pick](./git-cherry-pick.md)
+- [Monorepo 下 Git 工作流的最佳实践](./feature-branch-vs-trunk-based.md)
+- [git 分支管理策略](./git-branch.md)
+- [git hooks](./git-hooks.md)
 
 ## 练习
 
@@ -62,3 +70,5 @@ Git 常用命令图表——[思维导图-Git.png](http://pic002.cnblogs.com/img
 - [Best practices for Git branching](https://blogs.halodoc.io/best-practices-for-git/)
 - [Oh Shit, Git!?!](https://ohshitgit.com/)
 - [45 个 Git 经典操作场景，专治不会合代码](https://mp.weixin.qq.com/s/2p4m63JdsCjBpVku-WaZyA)
+- [最简单的 Git 服务器](https://www.ruanyifeng.com/blog/2022/10/git-server.html)
+

@@ -1,15 +1,13 @@
-# Git Submodule
+# git submodule
 
 > 工欲善其事，必先利其器！
 
-- 为主项目添加 Submodules
-  - 添加远程项目为子项目
-    - `git submodule add [-b <branch>] <repository> [<path>]`
+- 为主项目添加 submodules
+  - 添加远程项目为子项目 `git submodule add [-b <branch>] <repository> [<path>]`
   - 添加已经存在的本地项目为子项目 ?
-- 如何更新子项目
-  - `git submodule update`
-- 删除
-  - `git submodule deinit <submodule-name>`
+- 如何更新子项目 `git submodule update`
+- 如果批量更新子项目吗
+- 删除子项目 `git submodule deinit <submodule-name>`
 
 使用 git 子项目库，常用操作
 
