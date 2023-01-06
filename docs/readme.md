@@ -29,6 +29,7 @@
   - https://git-scm.com/docs
 - [**强烈推荐**]中文版 [https://git-scm.com/book/zh/v2/](https://git-scm.com/book/zh/v2/)
 - [Learn Version Control with Git](https://www.git-tower.com/learn/git/ebook/cn/command-line/introduction)
+- [整洁、线性的 Git 历史](https://www.bitsnbites.eu/a-tidy-linear-git-history/)
 
 ### gerrit
 
