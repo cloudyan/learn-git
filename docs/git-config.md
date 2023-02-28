@@ -144,7 +144,7 @@ git remote set-url origin git@<user_1.gitlab.com>:gitlab-org/gitlab.git
 
 如果是 Windows，配置为 `C:\Program Files\Git\etc\ssh\ssh_config`
 
-```conf
+```yaml
 # 配置示例
 # 该文件用于配置私钥对应的服务器
 
@@ -182,7 +182,13 @@ git remote set-url origin git@<user_1.gitlab.com>:gitlab-org/gitlab.git
 #     ssh -T git@gitlab.com
 
 
-# 为便于独立控制，可针对每个平台独立密钥
+# Host *
+#   AddKeysToAgent yes
+#   UseKeychain yes
+#   IdentityFile ~/.ssh/github
+
+
+# 为便于独立控制，可针对每个平台独立密钥 ~/.ssh/config
 
 # 格式如下
 # Default github user(xxx1@qq.com)
@@ -191,29 +197,45 @@ Host github.com
   HostName github.com
   IdentityFile ~/.ssh/github.com_rsa
 
-# second user(xxx2@qq.com)
-# 建一个github别名，新建的帐号使用这个 Host 别名做克隆和更新
-Host github2
-  HostName github.com
-  IdentityFile ~/.ssh/yue_rsa
-
-# 公司的 gitlab (xxx 改为公司域，按照以下格式，已验证可用)
-# ssh -T git@gitlab.xxx.com 测试是否连通
 Host gitlab.xxx.com
   IdentityFile ~/.ssh/gitlab.xxx.com_rsa
-  # HostName gitlab.xxx.com # 可选
-  # PreferredAuthentications publickey # 可选
 
-# ssh -T git@gitee.com
 Host gitee.com
   IdentityFile ~/.ssh/gitee.com_rsa
 
-# 还看到有人这样配置 https://github.com/kryptco/kr/issues/276
-Host *
-  IdentityFile ~/.ssh/github.com_rsa
-  IdentityFile ~/.ssh/gitee.xxx.com_rsa
-  IdentityFile ~/.ssh/gitee.com_rsa
-  IdentityFile ~/.ssh/id_rsa
+
+# 为便于独立控制，可针对每个平台独立密钥
+
+# # 格式如下
+# # Default github user(xxx1@qq.com)
+# # HostName 这个是真实的域名地址
+# Host github.com
+#   HostName github.com
+#   IdentityFile ~/.ssh/github.com_rsa
+
+# # second user(xxx2@qq.com)
+# # 建一个github别名，新建的帐号使用这个 Host 别名做克隆和更新
+# Host github2
+#   HostName github.com
+#   IdentityFile ~/.ssh/yue_rsa
+
+# # 公司的 gitlab (xxx 改为公司域，按照以下格式，已验证可用)
+# # ssh -T git@gitlab.xxx.com 测试是否连通
+# Host gitlab.xxx.com
+#   IdentityFile ~/.ssh/gitlab.xxx.com_rsa
+#   # HostName gitlab.xxx.com # 可选
+#   # PreferredAuthentications publickey # 可选
+
+# # ssh -T git@gitee.com
+# Host gitee.com
+#   IdentityFile ~/.ssh/gitee.com_rsa
+
+# # 还看到有人这样配置 https://github.com/kryptco/kr/issues/276
+# Host *
+#   IdentityFile ~/.ssh/github.com_rsa
+#   IdentityFile ~/.ssh/gitee.xxx.com_rsa
+#   IdentityFile ~/.ssh/gitee.com_rsa
+#   IdentityFile ~/.ssh/id_rsa
 
 # 配置示例
 # Host myhost     # 这里是自定义的host简称，以后连接远程服务器就可以用命令ssh myhost，如 git@github.com [注意下面有缩进]
