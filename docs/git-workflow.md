@@ -156,6 +156,8 @@ Git 作为一个源码管理系统，不可避免涉及到多人协作。
 
     # 方案 2: 基于远程 origin/master 做 rebase
     git fetch
+    # 我们常用的就是这个，让当前 feature 开发分支保持基于最新的 master 开发
+    # 之后再提交 MR 到 master 进行合并
     git rebase origin/master
 
     # 方案 3: 汇总
