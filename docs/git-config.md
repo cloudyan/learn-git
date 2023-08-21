@@ -35,6 +35,10 @@ $ git config user.name 'cloudyan'
 $ git config core.fileMode false
 
 
+# 推荐使用 diff3
+$ git config --global merge.conflictstyle zdiff3
+
+
 # 取消配置
 git config [--global] --unset user.name
 git config [--global] --unset user.email
@@ -67,6 +71,43 @@ git config [--global] --unset user.email
   dump = cat-file -p
   mg = merge --no-ff
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+```
+
+其他配置参考
+
+```conf
+[core]
+  filemode = false
+  editor = /usr/bin/vim
+  # autocrlf = input
+  excludesfile = ~/.gitignore_global
+  # whitespace = cr-at-eol
+[init]
+  templatedir = ~/.git_template
+[commit]
+  template = ~/.stCommitMsg
+  verbose = true
+[difftool "sourcetree"]
+  cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
+  path = -ro
+[mergetool "sourcetree"]
+  cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+  trustExitCode = true
+[hub]
+  protocol = https
+[color]
+  ui = true
+[pull]
+  rebase = true
+[push]
+  default = simple
+  autoSetupRemote = true
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
 ```
 
 ### github操作指南
