@@ -60,6 +60,8 @@
   - `git checkout master`
   - `git reset --hard origin/master`
   - `git clean -d --force`
+- 代码错误提交到公共提测分支，想将这个 commit 也提交到自己的开发分支
+  - `git cherry-pick commitId` 即可
 
 ![git-diff](./img/git-diff.png)
 

@@ -141,7 +141,7 @@ Git 作为一个源码管理系统，不可避免涉及到多人协作。
 
     - `origin master` 代表着两个概念，前面的 origin 代表远程名，后面的 master 代表远程分支名
     - `origin/master` 只代表一个概念，即远程分支名，是从远程拉取代码后在本地建立的一份拷贝（因此也有人把它叫作本地分支）。
-    - `git rebase origin/master` 所以做 rebase master 分支，使用的事这个命令
+    - `git rebase origin/master` 所以做 rebase master 分支，使用的是这个命令
 
     操作
 
