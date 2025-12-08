@@ -97,36 +97,49 @@ pip install git-filter-repo
 brew install git-filter-repo
 ```
 
-### 拆分目录为新仓库
+### 拆分目录为新仓库（最简操作）
 
+从 A 仓库里只保留指定目录，并把它变成全新独立仓库 B 的最简操作：
+
+1. 裸克隆 A（不 checkout 工作区，速度快）
 ```bash
-# 1. 克隆原仓库
-git clone <原仓库URL> new-repo
-cd new-repo
-
-# 2. 使用 filter-repo 提取指定目录
-git filter-repo --path <要拆分的目录>/ --path-rename <要拆分的目录>/
-
-# 3. 添加新远程仓库并推送
-git remote add origin <新仓库URL>
-git push -u origin main
+git clone --bare https://your-git/A.git A_bare
+cd A_bare
 ```
 
-### 示例
+2. 只保留目标目录，其余全部扔掉
+```bash
+git filter-repo --path <要拆分的目录> --path-rename <要拆分的目录>:/ --force
+```
+
+3. （可选）把旧 remote 删掉，换成新仓库 B 的地址
+```bash
+git remote add origin https://your-git/B.git
+git push --mirror origin
+```
+
+### 命令解释
+
+- `--path <目录>` - 只让过滤器保留这一条路径，其余文件和提交全部丢弃
+- `--path-rename <目录>:/` - 把指定目录提为根目录（即新仓库里再也不带这层文件夹）。如果你想保留这层目录，把这句去掉即可
+- `--force` - filter-repo 强制重写当前仓库；裸仓库里用是安全的
+- `--mirror` - 推送所有分支、所有 tag、所有 ref，保证历史完整
+
+### 示例：基本用法
 将 `src/components` 目录拆分为独立仓库：
 
 ```bash
-git clone https://github.com/user/old-repo.git
-cd old-repo
+git clone --bare https://github.com/user/old-repo.git old-repo_bare
+cd old-repo_bare
 
 # 提取目录并重命名路径（移除父目录）
-git filter-repo --path src/components/ --path-rename src/components/:
+git filter-repo --path src/components --path-rename src/components:/ --force
 
 # 设置新仓库地址
 git remote add origin https://github.com/user/new-components-repo.git
 
 # 推送到新仓库
-git push -u origin main
+git push --mirror origin
 ```
 
 ### 更灵活的用法
@@ -134,9 +147,63 @@ git push -u origin main
 # 提取多个路径
 git filter-repo --path src/components/ --path docs/components/
 
-# 提取目录但保持目录结构
-git filter-repo --path src/components/
+# 提取目录但保持目录结构（不去掉父目录）
+git filter-repo --path src/components
 ```
+
+### 只提取特定分支
+如果只想提取特定分支而不是所有分支：
+
+```bash
+# 场景1：只想提取 A 仓库的 dev 分支
+git clone --bare --branch dev --single-branch https://your-git/A.git A_bare
+cd A_bare
+
+git filter-repo \
+--path apps/abc \
+--path-rename apps/abc:/ \
+--refs refs/heads/dev          # 只重写这一条分支
+
+git remote add origin https://your-git/B.git
+git push origin dev
+```
+
+### 提取多分支
+如果 A 仓库有多条分支都要提取：
+
+```bash
+# 裸克隆全部历史（默认就会拉全部分支）
+git clone --bare https://your-git/A.git A_bare
+cd A_bare
+
+# 一次性重写所有分支 + tag
+git filter-repo \
+--path apps/abc \
+--path-rename apps/abc:/        # 想保留目录层就去掉这句
+
+# 全部推到 B
+git remote add origin https://your-git/B.git
+git push --mirror origin          # 所有分支、tag 一次性过去
+```
+
+### 验证结果
+本地看一眼目录结构：
+```bash
+git clone <新仓库URL> B_local
+cd B_local
+ls                # 应该只剩目标目录里的文件
+```
+
+### 常见问题
+
+#### "error: git-filter-repo 找不到"
+Python≥3.5 直接 pip 装：
+```bash
+pip install git-filter-repo
+```
+
+#### "refusing to overwrite untracked files"
+一定用 裸仓库 操作（--bare），不要在有工作区的仓库里跑 filter-repo。
 
 ### 优点
 - 比 `git filter-branch` 更快
